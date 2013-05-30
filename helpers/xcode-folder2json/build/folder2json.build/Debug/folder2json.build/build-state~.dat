@@ -1,0 +1,61 @@
+Tfolder2json
+v5
+r1
+cCheck dependencies
+cCompileC build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.o "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLd "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug/folder2json" normal x86_64
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+c00000000503F1B7700000000000000AA
+t1346313079
+s170
+
+N/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug/folder2json
+t2
+s0
+
+N/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/folder2json.LinkFileList
+c0000000051A3100A0000000000000099
+t1369640970
+s153
+
+N/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.o
+t2
+s0
+
+N/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cpp
+c0000000051A30F0C0000000000000128
+t1369640716
+s296
+i<iostream>
+
+CBuild AST from "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cpp"
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesf949bd8a4753b741^c7f1bf8a4753b741^---0#1#0#--18"Check dependencies36"B1466BE2-A765-49F0-8AD9-661FB63E6910-
+
+CCompileC build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.o "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s391333770.751733
+e391333771.400790
+r1
+xCompileC
+xbuild/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.o
+x/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Compile /Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cppc191c08a4753b741^55a4668b4753b741^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/sundhage/Documents/03%20PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cpp0000000000000000^3313"CompileC build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.o folder2json/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.7 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/folder2json-generated-files.hmap" "-I/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/folder2json-own-target-headers.hmap" "-I/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/folder2json-all-target-headers.hmap" -iquote "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/folder2json-project-headers.hmap" "-I/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug/include" -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include "-I/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/DerivedSources/x86_64" "-I/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/DerivedSources" "-F/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug" -MMD -MT dependencies -MF "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.d" --serialize-diagnostics "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.dia" -c "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/folder2json/main.cpp" -o "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/main.o"36"91CB9F50-9259-40C0-A517-2FC7F6C04E12-
+
+CLd "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug/folder2json" normal x86_64
+s391333771.407579
+e391333771.437977
+r1
+xLd
+x/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug/folder2json
+xnormal
+xx86_64
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Link /Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug/folder2json3677688b4753b741^ae29708b4753b741^---0#0#0#--901"Ld build/Debug/folder2json normal x86_64    cd "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json"    setenv MACOSX_DEPLOYMENT_TARGET 10.7    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk "-L/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug" "-F/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug" -filelist "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/folder2json.build/Debug/folder2json.build/Objects-normal/x86_64/folder2json.LinkFileList" -mmacosx-version-min=10.7 -stdlib=libc++ -o "/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/folder2json/folder2json/build/Debug/folder2json"36"2CF2A302-6585-411F-A9CA-671FB915B5D0-
+
