@@ -1,0 +1,1075 @@
+{
+    "soundData": {
+      "sound": [
+        {
+          "name": "silence",
+          "length": "162,4",
+          "type": "1"
+        },
+        {
+          "name": "Menu_komp_1",
+          "length": "162,4",
+          "type": "0"
+        },
+        {
+          "name": "Menu_komp_2",
+          "length": "162,4",
+          "type": "0"
+        },
+        {
+          "name": "Menu_komp_3",
+          "length": "162,4",
+          "type": "0"
+        },
+        {
+          "name": "Menu_komp_4_a",
+          "length": "162,4",
+          "type": "0"
+        },
+        {
+          "name": "Menu_komp_4_b",
+          "length": "162,4",
+          "type": "0"
+        },
+        {
+          "name": "Menu_komp_4_c",
+          "length": "162,4",
+          "type": "0"
+        },
+        {
+          "name": "InGame_mel_1",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_mel_2",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_mel_3",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_mel_4",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_mel_5",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_mel_6",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_mel_7",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_efx_1",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_efx_2",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_efx_3",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_efx_4",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_efx_5",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_efx_6",
+          "length": "162,4"
+        },
+        {
+          "name": "InGame_efx_7",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_efx_1",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_efx_2",
+          "length": "162,1"
+        },
+        {
+          "name": "Stress_efx_3",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_efx_4",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_efx_5",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_efx_6",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_efx_7",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_efx_8",
+          "length": "162,2"
+        },
+        {
+          "name": "Stress_efx_9",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_1",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_2",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_3",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_4",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_5",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_6",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_7",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_8",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_mel_9",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_komp_1_1",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_komp_1_2",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_komp_2_1",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_komp_2_2",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_komp_3_1",
+          "length": "162,4"
+        },
+        {
+          "name": "Stress_komp_3_2",
+          "length": "162,4"
+        },
+        {
+          "name": "Trans_1",
+          "length": "162,4"
+        },
+        {
+          "name": "Trans_2",
+          "length": "162,12"
+        },
+        {
+          "name": "hit1",
+          "length": "162,4"
+        },
+        {
+          "name": "hit2",
+          "length": "162,4"
+        },
+        {
+          "name": "hit3",
+          "length": "162,4"
+        },
+        {
+          "name": "dead",
+          "length": "162,4"
+        },
+        {
+          "name": "heart",
+          "length": "162,4"
+        }
+      ],
+      "soundObject": [
+        {
+          "mode": "pattern",
+          "name": "menu_komp_SO",
+          "loop": "1",
+          "volume": "1",
+          "pan": "0",
+          "group": "kompgroup",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,4",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,8",
+              "#text": "Menu_komp_3"
+            },
+            {
+              "-offset": "162,12",
+              "#text": "Menu_komp_4_a"
+            },
+            {
+              "-offset": "162,16",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,20",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,24",
+              "#text": "Menu_komp_3"
+            },
+            {
+              "-offset": "162,28",
+              "#text": "Menu_komp_4_b"
+            }
+          ]
+        },
+        {
+          "mode": "pattern",
+          "name": "ingame_komp_SO",
+          "loop": "1",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,4",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,8",
+              "#text": "Menu_komp_3"
+            },
+            {
+              "-offset": "162,12",
+              "#text": "Menu_komp_4_a"
+            },
+            {
+              "-offset": "162,16",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,20",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,24",
+              "#text": "Menu_komp_3"
+            },
+            {
+              "-offset": "162,28",
+              "#text": "Menu_komp_4_c"
+            },
+            {
+              "-offset": "162,32",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,36",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,40",
+              "#text": "Menu_komp_3"
+            },
+            {
+              "-offset": "162,44",
+              "#text": "Menu_komp_4_a"
+            },
+            {
+              "-offset": "162,48",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,52",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,56",
+              "#text": "Menu_komp_3"
+            },
+            {
+              "-offset": "162,60",
+              "#text": "Menu_komp_4_c"
+            },
+            {
+              "-offset": "162,64",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,68",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,72",
+              "#text": "Menu_komp_3"
+            },
+            {
+              "-offset": "162,76",
+              "#text": "Menu_komp_2"
+            },
+            {
+              "-offset": "162,80",
+              "#text": "Menu_komp_1"
+            },
+            {
+              "-offset": "162,84",
+              "#text": "Menu_komp_4_c"
+            }
+          ]
+        },
+        {
+          "mode": "pattern",
+          "name": "ingame_mel_SO",
+          "loop": "1",
+          "volume": "1",
+          "pan": "0",
+          "group": "kompgroup",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "InGame_mel_1"
+            },
+            {
+              "-offset": "162,4",
+              "#text": "InGame_mel_2"
+            },
+            {
+              "-offset": "162,8",
+              "#text": "InGame_mel_3"
+            },
+            {
+              "-offset": "162,12",
+              "#text": "InGame_mel_4"
+            },
+            {
+              "-offset": "162,16",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,20",
+              "#text": "InGame_mel_5"
+            },
+            {
+              "-offset": "162,24",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,28",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,32",
+              "#text": "InGame_mel_1"
+            },
+            {
+              "-offset": "162,36",
+              "#text": "InGame_mel_2"
+            },
+            {
+              "-offset": "162,40",
+              "#text": "InGame_mel_3"
+            },
+            {
+              "-offset": "162,44",
+              "#text": "InGame_mel_4"
+            },
+            {
+              "-offset": "162,48",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,52",
+              "#text": "InGame_mel_6"
+            },
+            {
+              "-offset": "162,56",
+              "#text": "InGame_mel_7"
+            },
+            {
+              "-offset": "162,60",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,64",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,68",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,72",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,76",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,80",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,84",
+              "#text": "silence"
+            }
+          ]
+        },
+        {
+          "mode": "pattern",
+          "name": "ingame_efx_SO",
+          "loop": "1",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,4",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,8",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,12",
+              "#text": "InGame_efx_1"
+            },
+            {
+              "-offset": "162,16",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,20",
+              "#text": "InGame_efx_2"
+            },
+            {
+              "-offset": "162,24",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,28",
+              "#text": "InGame_efx_3"
+            },
+            {
+              "-offset": "162,32",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,36",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,40",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,44",
+              "#text": "InGame_efx_4"
+            },
+            {
+              "-offset": "162,48",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,52",
+              "#text": "InGame_efx_5"
+            },
+            {
+              "-offset": "162,56",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,60",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,64",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,68",
+              "#text": "InGame_efx_6"
+            },
+            {
+              "-offset": "162,72",
+              "#text": "InGame_efx_7"
+            },
+            {
+              "-offset": "162,76",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,80",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,84",
+              "#text": "silence"
+            }
+          ]
+        },
+        {
+          "name": "ingame_upbeat_SO",
+          "mode": "pattern",
+          "loop": "0",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": {
+            "-offset": "0",
+            "#text": "Stress_efx_2"
+          }
+        },
+        {
+          "name": "ingame_upbeat2_SO",
+          "mode": "pattern",
+          "loop": "0",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": {
+            "-offset": "0",
+            "#text": "Stress_efx_8"
+          }
+        },
+        {
+          "mode": "pattern",
+          "name": "stress_komp_SO",
+          "loop": "1",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "Stress_komp_1_1"
+            },
+            {
+              "-offset": "162,4",
+              "#text": "Stress_komp_1_2"
+            },
+            {
+              "-offset": "162,8",
+              "#text": "Stress_komp_1_1"
+            },
+            {
+              "-offset": "162,12",
+              "#text": "Stress_komp_1_2"
+            },
+            {
+              "-offset": "162,16",
+              "#text": "Stress_komp_1_1"
+            },
+            {
+              "-offset": "162,20",
+              "#text": "Stress_komp_1_2"
+            },
+            {
+              "-offset": "162,24",
+              "#text": "Stress_komp_1_1"
+            },
+            {
+              "-offset": "162,28",
+              "#text": "Stress_komp_1_2"
+            },
+            {
+              "-offset": "162,32",
+              "#text": "Stress_komp_1_1"
+            },
+            {
+              "-offset": "162,36",
+              "#text": "Stress_komp_1_2"
+            },
+            {
+              "-offset": "162,40",
+              "#text": "Stress_komp_2_1"
+            },
+            {
+              "-offset": "162,44",
+              "#text": "Stress_komp_2_2"
+            },
+            {
+              "-offset": "162,48",
+              "#text": "Stress_komp_2_1"
+            },
+            {
+              "-offset": "162,52",
+              "#text": "Stress_komp_2_2"
+            },
+            {
+              "-offset": "162,56",
+              "#text": "Stress_komp_2_1"
+            },
+            {
+              "-offset": "162,60",
+              "#text": "Stress_komp_2_2"
+            },
+            {
+              "-offset": "162,64",
+              "#text": "Stress_komp_2_1"
+            },
+            {
+              "-offset": "162,68",
+              "#text": "Stress_komp_2_2"
+            },
+            {
+              "-offset": "162,72",
+              "#text": "Stress_komp_3_1"
+            },
+            {
+              "-offset": "162,76",
+              "#text": "Stress_komp_3_2"
+            },
+            {
+              "-offset": "162,80",
+              "#text": "Stress_komp_3_1"
+            },
+            {
+              "-offset": "162,84",
+              "#text": "Stress_komp_3_2"
+            },
+            {
+              "-offset": "162,88",
+              "#text": "Stress_komp_3_1"
+            },
+            {
+              "-offset": "162,92",
+              "#text": "Stress_komp_3_2"
+            },
+            {
+              "-offset": "162,96",
+              "#text": "Stress_komp_3_1"
+            },
+            {
+              "-offset": "162,100",
+              "#text": "Stress_komp_3_2"
+            },
+            {
+              "-offset": "162,104",
+              "#text": "Stress_komp_1_1"
+            },
+            {
+              "-offset": "162,108",
+              "#text": "Stress_komp_1_2"
+            }
+          ]
+        },
+        {
+          "mode": "pattern",
+          "name": "stress_mel_SO",
+          "loop": "1",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,4",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,8",
+              "#text": "Stress_mel_1"
+            },
+            {
+              "-offset": "162,12",
+              "#text": "Stress_mel_2"
+            },
+            {
+              "-offset": "162,16",
+              "#text": "Stress_mel_3"
+            },
+            {
+              "-offset": "162,20",
+              "#text": "Stress_mel_4"
+            },
+            {
+              "-offset": "162,24",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,28",
+              "#text": "Stress_mel_5"
+            },
+            {
+              "-offset": "162,32",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,36",
+              "#text": "Stress_mel_6"
+            },
+            {
+              "-offset": "162,40",
+              "#text": "Stress_mel_1"
+            },
+            {
+              "-offset": "162,44",
+              "#text": "Stress_mel_2"
+            },
+            {
+              "-offset": "162,48",
+              "#text": "Stress_mel_3"
+            },
+            {
+              "-offset": "162,52",
+              "#text": "Stress_mel_4"
+            },
+            {
+              "-offset": "162,56",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,60",
+              "#text": "Stress_mel_7"
+            },
+            {
+              "-offset": "162,64",
+              "#text": "Stress_mel_8"
+            },
+            {
+              "-offset": "162,68",
+              "#text": "Stress_mel_9"
+            },
+            {
+              "-offset": "162,72",
+              "#text": "Stress_mel_1"
+            },
+            {
+              "-offset": "162,76",
+              "#text": "Stress_mel_2"
+            },
+            {
+              "-offset": "162,80",
+              "#text": "Stress_mel_3"
+            },
+            {
+              "-offset": "162,84",
+              "#text": "Stress_mel_4"
+            },
+            {
+              "-offset": "162,88",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,92",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,96",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,100",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,104",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,108",
+              "#text": "silence"
+            }
+          ]
+        },
+        {
+          "mode": "pattern",
+          "name": "stress_efx_SO",
+          "loop": "1",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,4",
+              "#text": "Stress_efx_1"
+            },
+            {
+              "-offset": "162,8",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,12",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,16",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,20",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,24",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,28",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,32",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,36",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,40",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,44",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,48",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,52",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,56",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,60",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,64",
+              "#text": "Stress_efx_3"
+            },
+            {
+              "-offset": "162,68",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,72",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,76",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,80",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,84",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,88",
+              "#text": "Stress_efx_4"
+            },
+            {
+              "-offset": "162,92",
+              "#text": "Stress_efx_5"
+            },
+            {
+              "-offset": "162,96",
+              "#text": "Stress_efx_6"
+            },
+            {
+              "-offset": "162,100",
+              "#text": "Stress_efx_7"
+            },
+            {
+              "-offset": "162,104",
+              "#text": "silence"
+            },
+            {
+              "-offset": "162,108",
+              "#text": "Stress_efx_9"
+            }
+          ]
+        },
+        {
+          "mode": "pattern",
+          "name": "trans1_SO",
+          "loop": "0",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": {
+            "-offset": "162,0",
+            "#text": "Trans_1"
+          }
+        },
+        {
+          "mode": "pattern",
+          "name": "trans2_SO",
+          "loop": "0",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": {
+            "-offset": "162,0",
+            "#text": "Trans_2"
+          }
+        },
+        {
+          "mode": "randomtrig",
+          "group": "kompgroup",
+          "name": "hit_SO",
+          "loop": "0",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": [
+            {
+              "-offset": "162,0",
+              "#text": "hit1"
+            },
+            {
+              "-offset": "162,0",
+              "#text": "hit2"
+            },
+            {
+              "-offset": "162,0",
+              "#text": "hit3"
+            }
+          ]
+        },
+        {
+          "mode": "randomtrig",
+          "name": "dead_SO",
+          "loop": "0",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": {
+            "-offset": "162,0",
+            "#text": "dead"
+          }
+        },
+        {
+          "mode": "randomtrig",
+          "name": "heart_SO",
+          "loop": "0",
+          "volume": "1",
+          "pan": "0",
+          "parentBus": "music",
+          "sound": {
+            "-offset": "162,0",
+            "#text": "heart"
+          }
+        }
+      ],
+      "arrangement": [
+        {
+          "name": "menu_ARR",
+          "domain": "Mx",
+          "tempo": "162",
+          "retrigg": "0",
+          "soundObject": "menu_komp_SO"
+        },
+        {
+          "name": "ingame_ARR",
+          "domain": "Mx",
+          "tempo": "162",
+          "retrigg": "0",
+          "soundObject": [
+            {
+              "-upbeat": "1",
+              "#text": "ingame_upbeat_SO"
+            },
+            {
+              "-upbeat": "1",
+              "#text": "ingame_upbeat2_SO"
+            },
+            "ingame_komp_SO",
+            "ingame_efx_SO",
+            "ingame_mel_SO"
+          ]
+        },
+        {
+          "name": "stress_ARR",
+          "domain": "Mx",
+          "tempo": "162",
+          "retrigg": "0",
+          "soundObject": [
+            "stress_komp_SO",
+            "stress_mel_SO",
+            "stress_efx_SO"
+          ]
+        },
+        {
+          "name": "trans1_ARR",
+          "domain": "Mx",
+          "tempo": "162",
+          "retrigg": "0",
+          "soundObject": "trans1_SO"
+        },
+        {
+          "name": "trans2_ARR",
+          "domain": "Mx",
+          "tempo": "162",
+          "retrigg": "0",
+          "soundObject": "trans2_SO"
+        }
+      ]
+    }
+}
