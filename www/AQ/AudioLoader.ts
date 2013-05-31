@@ -30,9 +30,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
  module AudioCue {
-
+ 	/**
+		External API for converting a Base64 binary to ArrayBuffer.
+ 	*/
 	declare var Base64Binary;
 
+	/**
+		Loads and decodes audio data.
+	*/
  	export class AudioLoader extends AQObject {
 		private _loadCue:AudioSource[];
 	 	private _loadedData:AudioSource[];
@@ -45,7 +50,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	 	private _audioFileJSON:any;
 
 
+	 	/**
+	 		Usage of this class is to add SoundVO instances and then preload them.
 
+			@param callback The callback object that will get executed on each buffer creation. @see AudioSourceCallback
+	 	*/
  		constructor(callback:AudioSourceCallback) {
  			super();
  			this._callback = callback;
@@ -56,6 +65,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  			this._context = new webkitAudioContext();
  		}
 
+ 		/**
+			Adds a file to a load queue.
+			@param soundVO the sound file to load
+ 		*/
  		addFile(soundVO:SoundVO) {
  			// dont wanna create condition races...
  			if (this._isPreloading) return;
@@ -66,6 +79,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
  		}
 
+ 		/**
+			Adds a hashmap (Object) of files to a load queue.
+			@param soundsVO the sound files to load
+ 		*/
  		addFiles(soundsVO:SoundVO[]) {
  			if (this._isPreloading == true) return;
  			// console.log("mm");
@@ -76,7 +93,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  				this.addFile(soundsVO[prop]);
  			}
  		}
-
+ 		/**
+			Starts the loading of added files.
+			@param jsonAudioData If this is set, the audio bufffer creation process will use this json to decompress audio data instead of loading file url:s
+ 		*/
  		preloadAll(jsonAudioData?:any = null):bool {
  			if (this._loadCue.length == 0) return false;
  			this._isPreloading = true;
@@ -163,14 +183,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  			if (this._loadCue.length > 0) this._preload();
  		}
 
+ 		/**
+			returns a hashmap (Object) of all the loaded AudioSource instances. The keys are equal to the sound names.
+ 		*/
  		public getAudioSourcesMap():AudioSource[] {
  			return this._loadedDataMap;
  		}
 
  	}
 
-
+ 	/**
+		The AudioLoader callback type definition
+ 	*/
  	export interface AudioSourceCallback {
+ 		/**
+			@param af The decompressed audio data info.
+ 		*/
  		(af:AudioSource, cueLength:number):void;
  	}
  }

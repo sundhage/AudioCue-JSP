@@ -30,67 +30,189 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 module AudioCue {
-	 	// take care of timers in here.. do not mess the Sound class up...
+	/**
+		A prepresentation of a playing sound, should only be created by ISound using PoolController.
+		Since these objects are created and removed very often the instances are provided by an object pool (to prevent garbage collection)
+		@see PoolController
+	*/
  	export class PlayingSound extends Poolable {
- 		//constructor() {console.log("i am playingsound");}
+ 		/**
+			unique identifier
+ 		*/
  		id:number;
+ 		/**
+			the Web Audio API source node
+ 		*/
  		source:AudioSourceNode;
+ 		/**
+			the start time relative to the global context created in SoundController (@see SoundController)
+ 		*/
  		startTime:number;
+ 		/**
+			playing state
+ 		*/
  		isPlaying:bool;
+ 		/**
+			the creator object
+ 		*/
  		parent:ISound;
- 		
+ 		/**
+			Adds the sound to a listener mechanism that will fire an event when it is finished playing (since this is not supported natively in the Web Audio API)
+ 		*/
  		public startListening(callback) {
  			// todo:
  			SoundController.getInstance().addPlayingSound(this, callback);
  		}
  	}
+
+ 	/**
+		Callback type when something happens to a PlayingSound instance (sound start, sound end, musicalEnd)
+ 	*/
  	export interface SoundCallback {
+ 		/**
+			@param event Event name (@see SoundEvents)
+			@param p PlayingSound instance
+			@param arg Content depends on event (@see SoundEvents)
+ 		*/
  		(event:String, p:PlayingSound, arg:number):void;
  	}
 
-// VO's
+	/**
+		A value object created in AudioLoader.
+	*/
  	export class AudioSource {
+ 		/**
+			The audio data buffer.
+ 		*/
  		buffer:AudioBuffer;
+ 		/**
+			Indicates if the buffer is filled
+ 		*/
  		isValid:bool;
+ 		/**
+			Reference to the SoundVO instance.
+ 		*/
  		soundVO:SoundVO;
  	}
 
+ 	/**
+		A value object containing sound settings. (created in Parser and held by ISound instances)
+ 	*/
  	export class SoundVO {
+ 		/**
+			This type is means the ISound should be a Sound instance.
+ 		*/
  		static SOUND_TYPE_AUDIOFILE:number = 0;
+ 		/**
+			This type is means the ISound should be a Silence instance.
+ 		*/
  		static SOUND_TYPE_SILENCE:number = 1;
 
+ 		/**
+			Name of the sound.
+ 		*/
  		name:string;
+ 		/**
+			Sound path
+ 		*/
  		path:string;
+ 		/**
+			Sound type. @see SOUND_TYPE_AUDIOFILE @see SOUND_TYPE_SILENCE
+ 		*/
  		type:number;
+ 		/**
+			Sound musical length in seconds.
+ 		*/
  		musicalLength:number;
  	}
  	
+
+ 	/**
+		A value object containing SoundObject settings. (created in Parser)
+ 	*/
 	export class SoundObjectVO {
+		/**
+			An indexed array of AudioSource instances
+		*/
 		public audioSources:AudioSource[];
+		/**
+			Sound Object name
+		*/
 		public title:string;
+		/**
+			An indexed array of SoundVO instances
+		*/
 		public soundsVO:SoundVO[];
+		/**
+			Type of SoundObject
+			@see SoundObjectTypes
+		*/
 		public type:number;
+		/**
+			Name of group all sounds should be played through.
+		*/
 		public groupName:string;
 	}
 
+ 	/**
+		A value object containing Sequence settings. (created in Parser)
+ 	*/
  	export class SequenceVO {
+		/**
+			An indexed array of AudioSource instances
+		*/
  		public audioSources:AudioSource[];
+		/**
+			An indexed array of SoundVO instances
+		*/
  		public soundsVO:SoundVO[];
+ 		/**
+			Indicated whether the sequence should loop or not.
+ 		*/
  		public loop:bool;
+		/**
+			Sequence name
+		*/
  		public title:string;
+		/**
+			Name of group all sounds should be played through.
+		*/
  		public groupName:string;
  	}
 
+ 	/**
+		A value object containing Arrangement settings. (created in Parser)
+ 	*/
  	export class ArrangementVO {
+ 		/**
+			An indexed array of SequenceVO instances
+ 		*/
 		public sequencesVO:SequenceVO[];
+		/**
+			Arrangement title
+		*/
 		public title:string;
+		/**
+			The arrangements domain (top level in musical hierarchy)
+		*/
 		public domain:string;
  	}
-// events
 
+	/**
+		A holder of static strings which contain valid event names in a PlayingSound callback.
+	*/
  	export class SoundEvents {
+ 		/**
+			Notifies that a sound has reached its end position. The callback argument arg (@see SoundCallback) will be 0
+ 		*/
  		static SOUND_END:string = "soundend";
+ 		/**
+			Notifies that a sound is about to reach its musical end position. The callback argument arg (@see SoundCallback) will contain the (relative) time to when the musical end will happen.
+ 		*/
  		static SOUND_MUSICAL_END:string = "soundmusicalend";
+ 		/**
+			Notifies that a sound started (if it was set to start in the future). The callback argument arg (@see SoundCallback) will be 0
+ 		*/
  		static SOUND_START:string = "soundstart";
  	}
 

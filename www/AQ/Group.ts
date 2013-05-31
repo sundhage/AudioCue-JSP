@@ -26,8 +26,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ///<reference path='AQObject.ts' />
 
 module AudioCue {
+	/**
+		A group is a simple way to perform audio routin in AudioCue.
+		A group has a gain level and it's also possible to attach a number of insert effects to each group.
+		Any ISound instance can be played in any group. 
+	*/
+
  	export class Group extends AQObject {
  		private static allGroups:Group[] = new Array();
+ 		/**
+			returns a group instance
+			@param name the name of the group.
+ 		*/
  		public static getGroup(name:string):Group {
  			return allGroups[name];
  		}
@@ -41,7 +51,11 @@ module AudioCue {
  		private _lastNode:AudioNode;
 
  		private _context:webkitAudioContext;
-
+ 		/**
+			@param name Group name.
+			@param context the audio context.
+			@param gain level
+ 		*/
  		constructor(name:string, context:webkitAudioContext, gain?:number=1) {
  			super();
  			Group.allGroups[name] = this;
@@ -57,11 +71,18 @@ module AudioCue {
  			
 
  		}
-
+ 		/**
+			Returns the first AudioNode in effect chain (i.e the Gain node)
+ 		*/
  		public getNode():AudioNode {
  			return this._gain;
  		}
+ 		/**
+			Creates and adds an effect with default parameters. Returns the created effect.
+			@param effectType what kind of effect to be created @see Effect
+			@param instanceName unique name of the effect instance
 
+ 		*/
  		public addEffect(effectType:string, instanceName:string):Effect {
  			var ef:Effect = new Effect(effectType, instanceName, this._context);
  			ef.getNode().connect(this._context.destination);
@@ -71,17 +92,34 @@ module AudioCue {
  			this._effects.push(ef);
  			return ef;
  		}
-
+ 		/**
+			Sets the gain (a value between 0 and 1)
+			@param value gain value;
+			@param time Tween time (not implemented yet)
+ 		*/
  		public setGain(value:number, time?:number = 0) {
  			this._gain.gain.value = value;
  		}
 
 	}
-
+	/**
+		Represents a AudioNode effect. Current supported effect types are:
+		"Pan"				->		PannerNode
+		"HighpassFilter"	->		BiQuadFilterNode
+		"LowpassFilter"		->		BiQuadFilterNode
+		"BandpassFilter"	->		BiQuadFilterNode
+		"PeakFilter"		->		BiQuadFilterNode
+		"LowshelfFilter"	->		BiQuadFilterNode
+		"HighshelfFilter"	->		BiQuadFilterNode
+	*/
 	export class Effect extends AQObject {
 
 		// hashmap
 		private static allEffects:Effect[] = new Array();
+		/**
+			returns the Effect instance
+			@param name Name of the effect (unique instance name provided to group.addEffect(...))
+		*/
 		public static getEffect(name:string):Effect {
 			return Effect.allEffects[name];
 		}
@@ -92,7 +130,11 @@ module AudioCue {
 		private _context;
 		private _paramMap:string[] = new Array();
 
-
+		/**
+			@param effectType @see Effect
+			@param instanceName Unique instance name (for fast retrieval)
+			@param context Global audio context
+		*/
 		constructor(effectType:string, instanceName:string, context:webkitAudioContext) {
 			super();
 			this._context = context;
@@ -188,11 +230,15 @@ x #define kJSAEEffectIdBiquadFilterHighshelfTitle "HighshelfFilter"
 			}
 		}
 
-
+		/**
+			returns the AudioNode instance
+		*/
 		public getNode():AudioNode {
 			return this._node;
 		}
-
+		/**
+			sets a effect instances audio parameter
+		*/
 		public setParam(paramName:string, value:number, time?:number = 0):number {
 			//console.log("setting param: "+this._paramMap[paramName]+" value: "+value);
 			if (time == 0)
@@ -211,7 +257,10 @@ x #define kJSAEEffectIdBiquadFilterHighshelfTitle "HighshelfFilter"
 			// map etc..
 			return time;
 		}
-
+		/**
+			returns a AudioParam value
+			@param paramName name of the parameter.
+		*/
 		public getParam(paramName:string):number {
 			return this._node[this._paramMap[paramName]]["value"];
 		}

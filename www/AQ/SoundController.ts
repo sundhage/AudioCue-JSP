@@ -22,12 +22,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-/*
-	SHOULD BE CONSIDERED PRIVATE IN THIS MODULE. How!?!?
 
-	AudioCue is the master singleton later on..
-
-*/
 
 
 ///<reference path='../typings/waa-nightly.d.ts' />
@@ -37,11 +32,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ///<reference path='AudioLoader.ts' />
 
 module AudioCue {
+	/**
+		Singleton class. Handles all created sounds and controls timings of musical end and actual end of all sounds.
+	*/
  	export class SoundController extends AQObject {
- 		// so we have time to start off new sonds in synch. test and change later on...
+ 		/**
+			When checking for musical end we have to be a bit early in time (to have time to start other ISounds)
+			This is the variable of how far ahead to check for musical ends.
+ 		*/
  		static LOOKAHEAD:number = (1024/44100)*2;
- 		//static LOOKAHEAD:number = 0.5;
-
+ 		/**
+			This is the ISound factory method.
+			@param audioSource the AudioSource instance
+			@param ctx The global audio context.
+			@param callback the SoundCallback instance
+ 		*/
  		public static createSound(audioSource:AudioSource, ctx:webkitAudioContext, callback:SoundCallback):ISound {
  			var snd:ISound = null;
  			var vo:SoundVO = audioSource.soundVO;
@@ -55,13 +60,19 @@ module AudioCue {
  		}
 
 		private static _instance:SoundController = null;
-
+		/**
+			Creates the singleton instance
+			@param callback not currently used
+		*/
 		public static createInstance(callback:SoundCallback):SoundController {
 			if (!_instance) {
 				_instance = new SoundController(callback);
 			}
 			return _instance;
 		}
+		/**
+			returns the singleton instance.
+		*/
 	 	static getInstance():SoundController { return _instance; }
 
 	 	private _callback:SoundCallback;
@@ -71,7 +82,9 @@ module AudioCue {
 
 		private _playingSounds:PlayingSoundHolder[];
 		private _toBeRemoved:PlayingSound[] = [];
-
+		/**
+			private constructor. @see SoundController.createInstance()
+		*/
 	 	constructor(callback:SoundCallback) {
 	 		super();
 	 		this._callback = callback;
@@ -121,6 +134,9 @@ module AudioCue {
 	 		if (this._toBeRemoved.length > 0) this._removePlayingSounds(this._toBeRemoved, true);
 	 	}
 
+	 	/**
+			Starts all the timing system stuff. Must be run before playing any sounds.
+	 	*/
 	 	public start():void {
 	 		try {
 
@@ -137,17 +153,25 @@ module AudioCue {
 	 		this._scriptNode.connect(this._context.destination);
 
 	 	}
-
-	 	// not yet implemented...
+	 	/**
+	 		not yet properly implemented...
+	 	*/
 	 	public stop():void {
 	 		// todo: stop everything etc etc.. 
 			this._scriptNode.disconnect();
 	 	}
 
-	 	// might be useless further ahead..
+	 	/**
+			Returns the global context.
+	 	*/
 	 	public getOutputContext():webkitAudioContext { return this._context; }
 
-	 	// poolify?
+	 	/**
+			add a playing sound so this controller can callback musical end and actual end.
+			TODO: Poolify PlayingSoundHolder
+			@param p playingSound instance
+			@param callback the SoundCallback function
+	 	*/
 	 	public addPlayingSound(p:PlayingSound, callback:SoundCallback):void {
 	 		// get one free from pool instead. will prevent GC working
 	 		
@@ -158,7 +182,9 @@ module AudioCue {
 	 		ph.startIsDispatched = false;
 	 		this._playingSounds.push(ph);
 	 	}
-
+	 	/**
+			removes a playing sound from the list of sounds that are checked if they're playing
+	 	*/
 	 	public removePlayingSound(p:PlayingSound):void {
 	 		this._toBeRemoved.length = 0;
 	 		this._toBeRemoved.push(p);
@@ -181,12 +207,26 @@ module AudioCue {
 	 		}
 	 	}
 	}
-
+	/**
+		A holder of playing sounds with some additional meta data	
+		TODO: extend with Poolable
+	*/
 	export class PlayingSoundHolder {
-		//addedAtTime:number;
+		/**
+			the PlayingSound instance
+		*/
 		playingSound:PlayingSound;
+		/**
+			the callback
+		*/
 		callback:SoundCallback;
+		/**
+			flag that indicates if musical end is callbacked / dispatched
+		*/
 		musicalEndIsDispatched:bool;
+		/**
+			flag that indicates is sound start is callbacked / dispatched
+		*/
 		startIsDispatched:bool;
 	}
 }

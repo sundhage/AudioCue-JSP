@@ -28,7 +28,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ///<reference path='SoundController.ts' />
 
 module AudioCue {
+
+	/**
+		A SoundObject is a container of one of more ISound instances.
+		These sounds can be started in two different ways: step by step or in random @see SoundObjectTypes
+	*/
+
  	export class SoundObject extends AQObject {
+ 		/**
+			returns a SoundObject instance
+			@param title SoundObject name
+ 		*/
  		public static getSoundObject(title:string):SoundObject {
  			return SoundObject._allSoundObjects[title];
  		}
@@ -45,7 +55,10 @@ module AudioCue {
  		private _group:Group;
 
 
-
+ 		/**
+			@param vo SoundObject settings
+			@param callback Not used.
+ 		*/
  		constructor(vo:SoundObjectVO, callback:any) {
  			super();
  			this._vo = vo;
@@ -68,7 +81,9 @@ module AudioCue {
  			}
 			SoundObject._allSoundObjects[this._vo.title] = this;
  		}
-
+ 		/**
+			Starts one of the sounds emmediately (which one is depending on the instance's type @see SoundObjectTypes)
+ 		*/
  		public play():void {
 
  			var index:number = 0;
@@ -89,6 +104,9 @@ module AudioCue {
  			this._lastPlayedIndex = index;
 
  		}
+ 		/**
+			Stops all current playing sounds started from this instance.
+ 		*/
  		public stop():void {
 			for (var i:number = 0; i<this._playingSounds.length; i++) {
 				var p:PlayingSound = this._playingSounds[i];
@@ -116,9 +134,17 @@ module AudioCue {
 		}
 
 	}
-
+	/**
+		Holder of different sound object type definitions.
+	*/
 	export class SoundObjectTypes {
+		/**
+			SoundObjects with RANDOMTRIG type will start a random sound from the sound list.
+		*/
 		static RANDOMTRIG:number = 0;
+		/**
+			SoundObjects with STEPTRIG type will iterate through the sound list for each play (and start over from the beginning when last sound has been played)
+		*/
 		static STEPTRIG:number = 1;
 	}
 

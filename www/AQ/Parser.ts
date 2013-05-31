@@ -33,6 +33,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 module AudioCue {
+	/**
+		Parses .json content into different value objects.
+	*/
+
  	export class Parser extends AQObject {
  		private _callback:ParserCallback;
  		private _extension:string;
@@ -51,6 +55,11 @@ module AudioCue {
 
  		private _arrangements:ArrangementVO[];
 
+ 		/**
+			@param extension file type. (".mp3" for mp3 files etc)
+			@param basePath path to content folder
+			@param callback Callback function (for progress and on finish)
+ 		*/
  		constructor(extension:string, basePath:string, callback:ParserCallback) {
  			super();
  			this._basePath = basePath;
@@ -66,18 +75,29 @@ module AudioCue {
 
 
  		}
+ 		/**
+			returns total number of ISound's
+ 		*/
  		public getNumberOfSounds():number {
  			return this._soundsCount;
  			
  		}
+ 		/**
+			Returns true if SoundVO's are created.
+ 		*/
  		public haveSoundData():bool {
  			return (this._sounds.length > 0);
  		}
-
+ 		/**
+			Returns true if events are parsed and created.
+ 		*/
  		public haveEventData():bool {
  			return this._didParseEvents;
  		}
 
+ 		/**
+			Parses the content of a file url asynchroniously. (will fire an event when finished)
+ 		*/
 
  		public parseUrl(url:string):void {
 			var req:XMLHttpRequest = new XMLHttpRequest();
@@ -94,7 +114,9 @@ module AudioCue {
 			req.send();
 
  		}
- 		
+ 		/**
+			Parses a string of json data
+ 		*/
  		public parseString(jsonData:string):void {
  			this.cb_loaded(JSON.parse(jsonData));
  		}
@@ -320,32 +342,64 @@ module AudioCue {
 			}
 
  		}
+ 		/**
+			returns a hashmap (Object) of all the SoundVO instances. Key is the sounds' name.
+ 		*/
  		public getSoundsVO():SoundVO[] {
  			return this._sounds;
  		}
+ 		/**
+		returns a hashmap (Object) of all the SequenceVO instances. Key is the sequences name.
+ 		*/
  		public getSequencesVO():SequenceVO[] {
  			return this._sequences;
  		}
+ 		/**
+		returns a hashmap (Object) of all the ArrangementVO instances. Key is the arrangements name.
+ 		*/
  		public getArrangementsVO():ArrangementVO[] {
  			return this._arrangements;
  		}
-
+ 		/**
+		returns a hashmap (Object) of all the SoundObjectVO instances. Key is the soundobjects name.
+ 		*/
  		public getSoundObjectsVO():SoundObjectVO[] {
  			return this._soundObjects;
  		}
 
+ 		/**
+		returns a hashmap (Object) of all the AQEvent instances. Key is the events name.
+ 		*/
  		public getEvents():AQEvent[] {
  			return this._events;
  		}
 
 	} 
+	/**
+		A holder of static strings which contain valid SoundObjectString types (used in .json files) names.
+	*/
 	class SoundObjectStringType {
+		/**
+			The soundobject is a Sequence
+		*/
 		static PATTERN:string = "pattern";
+		/**
+			The soundobject is a SoundObject with subtype steptrig
+		*/
 		static STEPTRIG:string = "steptrig";
+		/**
+			The soundobject is a SoundObject with subtype randomtrig
+		*/
 		static RANDOMTRIG:string = "randomtrig";
 
 	}
+	/**
+		Parser callback type definition.
+	*/
 	export interface ParserCallback {
+		/**
+			@param progress indicates current progress (value between 0 and 1). If 1 -> Parser is ready with everything.
+		*/
 		(progress:number):void;
 	}
 }

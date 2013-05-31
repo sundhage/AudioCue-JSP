@@ -23,11 +23,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 module AudioCue {
+	/**
+		All playable objects should conform to this interface.
+	*/
 	interface ISound {
+		/**
+			returns the duration of the sound (in seconds)
+		*/
 		getDuration():number;
+		/**
+			returns the musical length of the sound (in seconds)
+		*/
 		getMusicalLength():number;
+		/**
+			returns the the audio context (obs, the audio context used should be global and shared thru the whole API)
+		*/
 		getContext():webkitAudioContext;
+		/**
+			Starts the sound
+			@param time When to start the sound (relative from current time)
+			@param group What group the sound should be played in. If null or omitted the sound will play directly to the contexts destination.
+			@return A PlayingSound instance.
+		*/
 		play(time:number, group?:Group):PlayingSound;
+		/**
+			Stops a playing sound.
+			@param p The PlayingSound instance returned by play
+			@param time When to stop the sound (OBS, not yet implemented)
+		*/
 		stopPlayingSound(p:PlayingSound, time:number);
 	}
 

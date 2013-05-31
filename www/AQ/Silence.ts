@@ -33,17 +33,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 module AudioCue {
+	/**
+		A silent sound used to create gaps between other sounds.
+		@see ISound
+	*/
  	export class Silence extends AQObject implements ISound {
  		private _audioSource:AudioSource;
  		private _playingSounds:PlayingSound[];
  		private _idCount:number = 0;
  		private _callback:SoundCallback;
  		private _ac:webkitAudioContext;
- 		//public owner:any;
  		
 
- 		// provided by a sequence / sound object object??
-
+ 		/**
+			@see SoundController.createSound(...)			
+ 		*/
 		constructor(audioFile:AudioSource, ctx:webkitAudioContext, callback:SoundCallback) {
 			super();
 			this._audioSource = audioFile;

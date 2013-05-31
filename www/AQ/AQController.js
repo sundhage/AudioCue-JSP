@@ -3,7 +3,6 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var aqcontent = new Array();
 var AudioCue;
 (function (AudioCue) {
     var AQController = (function (_super) {

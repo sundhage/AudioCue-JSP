@@ -33,6 +33,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 module AudioCue {
+	/**
+		A sound that plays a buffer of audio data.
+		@see ISound
+	*/
 
  	export class Sound extends AQObject implements ISound {
  		private _audioFile:AudioSource;
@@ -42,12 +46,10 @@ module AudioCue {
 
 
 
- 		//public owner:any;
- 		
-
- 		// provided by a sequence / sound object object??
  		private _ac:webkitAudioContext;
-
+ 		/**
+			@see SoundController.createSound(...)			
+ 		*/
 		constructor(audioFile:AudioSource, context:webkitAudioContext, callback:SoundCallback) {
 			super();
 			this._audioFile = audioFile;

@@ -23,10 +23,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 module AudioCue {
+	/**
+		Object pool handler. Some objects that are created and deleted very often are held here to prevent garbage collection.
+		Number of objects in each pool is static and cannot be altered in runtime. To be able to create a pool of an object type, the
+		object type must extend the Poolable base class.
+	*/
+
 	 export class PoolController {
 	 	private static pools:Pool[] = new Array();
 
-
+	 	/**
+			Creates a new pool of a certain object type.
+			@param t Object class
+			@param args not used right now
+			@count number of objects in pool.
+	 	*/
 	 	static createPool(t:any, args:any[], count:number):bool {
 	 		if (!pools[t]) {
 	 			var pool:Pool = new Pool;
@@ -59,7 +70,10 @@ module AudioCue {
 	 	}
 
 
-	 	// should return null if there are no free objects...
+	 	/**
+			Returns a freed/released object from a pool. If there is no free objects it'll return null
+			@param t Object class
+	 	*/
 	 	static getObject(t:any):any {
 	 		var pool:Pool = pools[t];
 	 		if (!pool) return null;
@@ -86,7 +100,12 @@ module AudioCue {
 
 	 	}
 
-	 	// should move object from busy to free
+	 	/**
+			Frees an object from pool.
+			@param t Object class.
+			@param instance Object instance.
+
+	 	*/
 	 	static freeObject(t:any, instance:Poolable):bool {
 	 		var ll:LinkedList = pools[t].busyObjects[instance._poolid];
 	 		if (!ll) return false;
@@ -123,28 +142,50 @@ module AudioCue {
 
 
 	 }
-
+	 /**
+		Internal Pool value object.
+	 */
 	 export class Pool {
-	 	// class identifier
+	 	/**
+	 		class identifier
+	 	*/
 	 	cls:any;
-	 	// linked list of free objects
+	 	/**
+	 		linked list of free objects
+	 	*/
 	 	firstFree:LinkedList;
-	 	// linked list of busy objects
+	 	/**
+	 		linked list of busy objects
+	 	*/
 	 	firstBusy:LinkedList;
 
-	 	// hashmap of busy objects (instances) for fast/native retrieving
+	 	/**
+	 		hashmap of busy objects (instances) for fast/native retrieving
+	 	*/
 	 	busyObjects:LinkedList[];
 	 }
-
+	 /**
+		Linked list value object
+	 */
 	 export class LinkedList {
-	 	// the actual instance
+	 	/** The actual object instance */
 	 	object:Poolable;
-	 	// ptrs...
+	 	/**
+		 	pointer to next item
+	 	*/
 	 	next:LinkedList;
+	 	/**
+	 		pointer to previous item
+	 	*/
 	 	prev:LinkedList;
 	 }
-
+	 /**
+		All classes added to a Pool must extend this class.
+	 */
 	 export class Poolable {
+	 	/**
+			unique identifier.
+	 	*/
 	 	_poolid:number;
 	 }
 }

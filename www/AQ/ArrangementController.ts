@@ -31,16 +31,26 @@ module AudioCue {
 	// stop arrangement (hard)
 	// stop domain:time to stop
 
+	/**
+		Singleton class that handles Arrangement instances and their domains.
 
+	*/
  	export class ArrangementController extends AQObject {
-		private static _instance:ArrangementController = null;
 
+		private static _instance:ArrangementController = null;
+		/**
+			Creates the instance and returns it. If the instance allready exist it will return it without creating a new one.
+			@callback Callback, not implemented yet.
+		*/
 		public static createInstance(callback:ArrangementControllerCallback):ArrangementController {
 			if (!_instance) {
 				_instance = new ArrangementController(callback);
 			}
 			return _instance;
 		}
+		/**
+			Returns the singleton instance.
+		*/
 	 	static getInstance():ArrangementController { return _instance; }
 
 	 	private _callback:ArrangementControllerCallback;
@@ -51,14 +61,19 @@ module AudioCue {
 	 	private _allArrangements:Arrangement[];
 
 
-
+	 	/**
+			ArrangementController should be created using ArrangementController.createInstance()
+	 	*/
 	 	constructor(callback:ArrangementControllerCallback) {
 	 		super();
 	 		this._domains = new Array();
 	 		this._allArrangements = new Array();
 	 		this._callback = callback;
 	 	}
-
+	 	/**
+			creates a new Arrangement instance and returns it.
+			@arrVO the arrangement settings.
+	 	*/
 	 	public createArrangement(arrVO:ArrangementVO):Arrangement {
 	 		var arr:Arrangement = new Arrangement(arrVO, this.cb_arrangementCallback);
 
@@ -78,8 +93,14 @@ module AudioCue {
 	 		}
 	 		return arr;
 	 	}
-
-	 	// just nu: inget stöd för cue
+	 	/**
+			Plays an arrangement (and optionally a cued arrangement) and returns a time value of when it will be played.
+			If another arrangement is playing in the same domain it will get stopped and the arrangement to be played will play
+			when the other arrangement reaches its musical end.
+			@param name Name of the arrangement to play
+			@param cue Name of the cued arrangement to play
+			@param returnCueStart if true this method will return the time when the cue will start playing. otherwise when the first arrangement will start playing
+	 	*/
 	 	public playArrangement(name:string, cue?:string = null, returnCueStart?:bool = false):number {
 	 		var arr:Arrangement = this._allArrangements[name];
 	 		if (!arr) return 0;
@@ -111,16 +132,25 @@ module AudioCue {
 	 		//console.log("next start "+time+ " ret time: " + retTime);
 	 		return retTime;
 	 	}
-
+	 	/**
+			Returns the Arrangement instance
+			@param name Arrangement name
+	 	*/
 	 	public getArrangement(name:string):Arrangement {
 	 		return this._allArrangements[name];
 	 	}
-
+	 	/**
+			Returns the current arrangement playing in a specified domain. If no arrangement is playing it'll return null.
+			@param domainName Name of the domain.
+	 	*/
 	 	public getCurrentArrangementInDomain(domainName:string):Arrangement {
 	 		return this._domains[domainName].currentArrangement;
 	 	}
 
-	 	// OBS! Fixa stöd för cues och håll reda på om saker är cueade eller inte.
+	 	/**
+			Stops the current arrangement playing in a domain.
+			@param hard If set to true, the arrangement will stop immediately. If set to false the arrangement will keep playing current playing sounds, but not continue to play any following sounds.
+	 	*/
 	 	public stopDomain(domainName:string, hard:bool):number {
 	 		var res:number = 0;
 	 		if (this._domains[domainName].currentArrangement) {
@@ -149,15 +179,31 @@ module AudioCue {
 
 
 	}
-
+	/**
+		Not used / implemented.
+	*/
 	export interface ArrangementControllerCallback {
 		(fixme:any):any;
 	}
-
+	/**
+		A representation of a Domain.
+	*/
 	export class Domain {
+		/**
+			Domain name
+		*/
 		public title:string;
+		/**
+			Current playing arrangement (is null if no arrangement is playing)
+		*/
 		public currentArrangement:Arrangement;
+		/**
+			Cued arrangement (or null)
+		*/
 		public cuedArrangement:Arrangement;
+		/**
+			A hashmap (Object) of all arrangements in this domain. The keys are each arrangements name.
+		*/
 		public arrangements:Arrangement[];
 	}
 

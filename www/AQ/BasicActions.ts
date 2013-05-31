@@ -28,6 +28,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ///<reference path='EventController.ts' />
 
 module AudioCue {
+	/**
+		Plays an Arrangement with an optional cue arrangement. Returns a timing value of when the arrangement will play.
+		@see IAction
+	*/
 	var PlayArrAction:IAction = function(args:any, devArgs:any):number {
 		var ac:ArrangementController = ArrangementController.getInstance();
 		var name:string = args["name"];
@@ -38,6 +42,10 @@ module AudioCue {
 	}
 	EventController.getInstance().addAction(PlayArrAction, "PlayArrAction");
 
+	/**
+		Stops the current arrangement in a domain.
+		@see IAction
+	*/
 	var StopDomainAction:IAction = function(args:any, devArgs:any):number {
 		var ac:ArrangementController = ArrangementController.getInstance();
 		var name:string = args["name"];
@@ -47,6 +55,10 @@ module AudioCue {
 	}
 	EventController.getInstance().addAction(StopDomainAction, "StopDomainAction");
 
+	/**
+		Starts a SoundObject.
+		@see IAction
+	*/
 	var StartSOAction:IAction = function(args:any, devArgs:any):number {
 		var so:SoundObject = SoundObject.getSoundObject(args["name"]);
 		so.play();
@@ -54,13 +66,20 @@ module AudioCue {
 	}
 	EventController.getInstance().addAction(StartSOAction, "StartSOAction");
 
+	/**
+		Stops a SoundObject (all playing sounds)
+		@see IAction
+	*/
 	var StopSOAction:IAction = function(args:any, devArgs:any):number {
 		var so:SoundObject = SoundObject.getSoundObject(args["name"]);
 		so.stop();
 		return 0;
 	}
 	EventController.getInstance().addAction(StopSOAction, "StopSOAction");
-
+	/**
+		Sets (or optionally tween) an effect parameter to a value.
+		@see IAction
+	*/
 	var EffectParamAction:IAction = function(args:any, devArgs:any):number {
 		//name, param, value, time
 		var e:Effect = Effect.getEffect(args["name"]);

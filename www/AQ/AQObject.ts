@@ -25,6 +25,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 module AudioCue {
     // snapped from comment by Steven Ickman
     // http://stackoverflow.com/questions/12756423/is-there-an-alias-for-this-in-typescript
+
+    /**
+        Base class for all AudioCue classes.
+        This class currently handles the loss of "this" when a callback method is executed from some other object.
+        When creating a callback method one must add the prefix "cb_" to its name. Example:
+        private cb_somecallback():void {
+            console.log(this);  // this is now the class instance
+        }
+    */
+
     export class AQObject {
         constructor() {
             var _this = this, _constructor = (<any>this).constructor;

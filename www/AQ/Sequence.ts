@@ -22,19 +22,6 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-/*
-	Todo: callbacking on end etc..
-	
-
-	Have to be able to cue stuff..
-
-	Base class (for effects/tweens etc)
-	Also: Effect chain and all that (should be made on this level? at least some efx)
-
-	Bus-system w/ gain?
-	Group-system
-
-*/
 
 ///<reference path='AQObject.ts' />
 ///<reference path='AQStructs.ts' />
@@ -45,6 +32,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ///<reference path='SoundController.ts' />
 
 module AudioCue {
+	/**
+		A Sequence represents a sequence of ISounds that play after each other. The Sequence object start its next sound exactly
+		when the previous sound's musical end occur.
+
+	*/
  	export class Sequence extends AQObject {
 
  		private _context:webkitAudioContext;
@@ -64,7 +56,10 @@ module AudioCue {
  		private _currentPlayingSound:PlayingSound;
 
 
-
+ 		/**
+			@param sequenceVO Sequence settings
+			@param callback Callback function @see SequenceCallback
+ 		*/
  		constructor(sequenceVO:SequenceVO, callback:SequenceCallback) {
  			super();
  			this._loop = sequenceVO.loop;
@@ -78,33 +73,28 @@ module AudioCue {
 			this._title = sequenceVO.title;
 			this._group = Group.getGroup(sequenceVO.groupName);
 
-
-
  			for (var i:number = 0; i<this._audioSources.length; i++) {
  				var af:AudioSource = this._audioSources[i];
-// 				var sound:Sound = new Sound(af, this._context, this.cb_soundCallback);
 				var sound:ISound = SoundController.createSound(af, this._context, this.cb_soundCallback);
-
-
- 				//sound.owner = this;
  				this._sounds.push(sound);
  			}
-
- 			// create and prepare sounds based on this._audioFiles order and such
-
  		}
-
+ 		/**
+			Returns the total length of the sequence.
+ 		*/
  		public getLength():number {
  			var res:number = 0;
  			for (var i:number = 0; i<this._sounds.length; i++) {
  				var sound:ISound = this._sounds[i];
  				res += sound.getMusicalLength();
  			}
-
  			return res;
  		}
-
- 		// start from a specific index at a time offset
+ 		/**
+			Plays the sequence at a specified time, starting from a specific sound.
+			@param index Sound index (the internal array equals SequenceVO[].soundsVO)
+			@param offset Time offset when to start (relative to now)
+ 		*/
  		public play(index:number, offset:number):void {
  			if (this._playing) return;
  			index = index % this._sounds.length;
@@ -113,6 +103,7 @@ module AudioCue {
  			this._play(offset);
 
  		}
+
  		// should be called from callbacks etc...
  		private _play(offset:number) {
  			if (this._playing == false) return;
@@ -122,7 +113,10 @@ module AudioCue {
 
  		}
 
- 		// returns time when next mx end is
+ 		/**
+			Stops the sequence (if playing) and returns time to next stop position.
+			@param hard If set to true, the sequence will stop immediately. If set to false the sequence will keep playing current playing sounds, but not continue to play any following sounds.
+ 		*/
  		public stop(hard:bool):number {
  			if (this._playing == false) return 0;
  			this._playing = false;
@@ -142,7 +136,9 @@ module AudioCue {
 
  		}
 
- 		// returns next stop position
+ 		/**
+ 			Returns time to next stop position
+ 		*/
  		public getNextStopPosition():number {
  			//if (this._playing == false) return 0;
  			var currentSound:ISound = this._currentPlayingSound.parent;
@@ -150,7 +146,9 @@ module AudioCue {
  			var diff = (currentSound.getMusicalLength()+this._currentPlayingSound.startTime)-currentTime;
  			return diff;
  		}
-
+ 		/**
+			Returns the Sequence title
+ 		*/
  		public getTitle():string {
  			return this._title;
  		}
@@ -166,8 +164,6 @@ module AudioCue {
 
  		// handle onMusicalEnd
  		private cb_soundCallback(event:string, playingSound:PlayingSound, value:number):void {
- 			//var self:Sequence = playingSound.parent.owner;
- 			//köa upp nästa ljud
  			if (event == SoundEvents.SOUND_MUSICAL_END) {
  				var offset = this.getNextStopPosition();
  				if (this._currentIndex == this._sounds.length-1) {
@@ -176,8 +172,6 @@ module AudioCue {
  				}
  				this._currentIndex = (this._currentIndex +1) % this._sounds.length;
  				this._play(offset);
-
- 				//console.log("Mx end: "+self);
  			}
  			
  			if (event == SoundEvents.SOUND_END) {
@@ -190,12 +184,28 @@ module AudioCue {
  		}
 
 	}
-
+ 	/**
+		Holder of SequenceCallback event names
+ 	*/
  	export class SequenceEvents {
+ 		/**
+			Will fire when the sequences last sound reaches its musical end. The val parameter will be 0
+ 		*/
  		static SEQUENCE_END:string = "sequenceend";
+ 		/**
+			Will fire when the sequences starts (if played with an offset). The val parameter will be 0
+ 		*/
  		static SEQUENCE_START:string = "seqstart";
  	}
+ 	/**
+		Callback type spec.
+ 	*/
  	export interface SequenceCallback {
+ 		/**
+			@param event The callback event name. @see SequenceEvents
+			@param sender Sequence instance
+			@param val Not implemented.
+ 		*/
  		(event:string, sender:Sequence, val:number):void;
  	}
 

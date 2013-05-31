@@ -29,6 +29,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ///<reference path='SoundController.ts' />
 
 module AudioCue {
+	/**
+		An Arrangement holds a number of Sequence instances that gets played in parallell.
+		Each arrangement belongs to a domain. Two arrangements from the same domain should not be played in the same time.
+	*/
+
  	export class Arrangement extends AQObject {
  		private _sequencesVO:SequenceVO[];
  		private _sequences:Sequence[];
@@ -42,7 +47,11 @@ module AudioCue {
 
  		private _longestSequence:Sequence;
 
-
+ 		/**
+ 			An arrangement should only be created using ArrangementController.createArrangement(...)
+			@param vo The arrangement settings.
+			@param callback Function that gets executed when an arrangement starts and ends.
+ 		*/
  		constructor(vo:ArrangementVO, callback:ArrangementCallback) {
  			super();
 
@@ -68,10 +77,19 @@ module AudioCue {
  			this._longestSequence = this._sequences[tempId];
 
  		}
-
+ 		/**
+			returns the domain name this arrangement belongs to
+ 		*/
  		public getDomain():string { return this._domain; }
+ 		/**
+			returns the title
+ 		*/
  		public getTitle():string { return this._title; }
 
+ 		/**
+			plays the arrangement
+			@param offset When the arrangement should be played relative to current time.
+ 		*/
  		public play(offset:number):void {
  			if (this._playing) return;
  			this._playing = true;
@@ -79,7 +97,10 @@ module AudioCue {
  				this._sequences[i].play(0, offset);
  			}
  		}
-
+ 		/**
+			Stops the arrangement. Returns the time when the arrangement reaches next musical end (if hard is set to false, otherwise 0).
+			@param hard If set to true, the arrangement will stop immediately. If set to false the arrangement will keep playing current playing sounds, but not continue to play any following sounds.
+ 		*/
  		public stop(hard:bool):number {
  			if (this._playing == false) return 0;
  			this._playing = false;
@@ -91,7 +112,9 @@ module AudioCue {
  			return res;
  		}
 
-
+ 		/**
+			returns the next musical end position.
+ 		*/
  		public getNextStopPosition():number {
  			var res:number = 0;
  			for (var i:number = 0; i<this._sequences.length; i++) {
@@ -100,7 +123,9 @@ module AudioCue {
  			}
  			return res;
  		}
-
+ 		/**
+			returns the longest sequence's total time.
+ 		*/
  		public getTotalTime():number {
  			var res:number = 0;
  			for (var i:number = 0; i<this._sequences.length; i++) {
@@ -117,20 +142,34 @@ module AudioCue {
  					this._callback(ArrangementEvents.ARRANGEMENT_END, this, 0);
  				}
  			}
- 			// callbacka end of sequence...
- 			// hantera endast den LÄNGSTA sequencen -> gör så vi kan cuea grejjor
  		}
 
 
  	}
 
-
+ 	/**
+		Holder of ArrangementCallback event names
+ 	*/
  	export class ArrangementEvents {
+ 		/**
+			Will fire when the longest sequence reaches its end.
+			the ArrangementCallback val argument is set to 0, but should be set to a timing difference.
+ 		*/
  		static ARRANGEMENT_END:string = "arrend";
+ 		/**
+			Unused, not implemented.
+ 		*/
  		static ARRANGEMENT_START:string = "arrstart";
  	}
-
+ 	/**
+		Callback type spec.
+ 	*/
  	export interface ArrangementCallback {
+ 		/**
+			@param event Event name (@see ArrangementEvents)
+			@param sender The Arrangement instance that sent the event
+			@param val Value depends on event. Not implemented properly yet.
+ 		*/
  		(event:string, sender:Arrangement, val:number):void;
  	}
 

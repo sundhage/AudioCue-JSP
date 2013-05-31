@@ -39,15 +39,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 // holds Base64 json data when injecting via DOM...
-
-var aqcontent:any[] = new Array();
+//var aqcontent:any[] = new Array();
 
 module AudioCue {
+	/**
+		AQController is a top level singleton class that perform initialization and handles asset loading.
+
+	*/
  	export class AQController extends AQObject {
 		private static _instance:AQController = null;
-
+		/**
+			Creates an instance of AQController where assets and json files are actual files. Recommended to use during development.
+			@param jsonFileURLs An indexed array of paths to .json settings files (events.json, sounds.json, routing.json)
+			@param basePath Path to assets directory (mp3 files)
+			@param assetExtension Asset file format. If assets are in mp3 format this should equal ".mp3"
+			@param callback Funcion that gets triggered during loading processes etc.
+		*/
 		public static createInstance(jsonFileURLs:string[], basePath:string, assetExtension:string, callback:AudioCueCallback):AQController;
+		/**
+			Creates an instance of AQController where assets and settings are bundled in one json file. (to create one of these files use folder2json)
+			@param base64FileUrl path to the bundle
+			@param jsonFilenames An indexed array of the names of the settings (events.json etc...) files within the bundle.
+			@param callback Function that gets triggered during loading processes etc.
+		*/
 		public static createInstance(base64FileUrl:string, jsonFilenames:string[], callback:AudioCueCallback):AQController;
+
+		/**
+			Implementation of create instance.
+		*/
 		public static createInstance(arg1:any, arg2:any, arg3?:any, arg4?:any) {
 			if (!_instance) {
 				_instance = new AQController(arg1, arg2, arg3, arg4);
@@ -55,7 +74,9 @@ module AudioCue {
 			return _instance;
 
 		}
-
+		/*
+			returns the singleton instance of AQController. If not created it returns null.
+		*/
 	 	static getInstance():AQController { return _instance; }
 
 	 	private _base64FileUrl:string;
@@ -84,15 +105,21 @@ module AudioCue {
 
 
 
-	 	// fix later on...
 	 	private _callback:AudioCueCallback;
-
+		/**
+			Never instantiate AQController with new. Use AQController.createInstance(...) instead.
+		*/
 	 	constructor(jsonFileURLs:string[], basePath:string, assetExtension:string, callback:AudioCueCallback);
+		/**
+			Never instantiate AQController with new. Use AQController.createInstance(...) instead.
+		*/
 	 	constructor(base64FileUrl:string, jsonFilenames:string[], callback:AudioCueCallback);
+		/**
+			Never instantiate AQController with new. Use AQController.createInstance(...) instead.
+		*/
 	 	constructor(arg1:any, arg2:any, arg3?:any, arg4?:any) {
 	 		super();
 	 		
-	 		// create a pool
 	 		PoolController.createPool(PlayingSound, null, 64);
 
 			this._soundController = SoundController.createInstance(null);
@@ -114,7 +141,8 @@ module AudioCue {
 				this._parser = new Parser(this._assetExtension, this._basePath, this.cb_parser);
 			} else {
 				this._mode = 1;
-				// fix
+
+				// fix this?
 				this._assetExtension = ".mp3";
 				this._base64FileUrl = arg1;
 				this._jsonFiles = arg2;
@@ -126,6 +154,9 @@ module AudioCue {
 
 	 	}
 
+	 	/**
+			Starts the AudioCue initialization process.
+	 	*/
 	 	public init():void {
 	 		if (this._mode == 0) {
 	 			this._parser.parseUrl(this._jsonFiles[this._currentJSONIndex]);
@@ -207,12 +238,23 @@ module AudioCue {
 	 		}
 	 	}
 
+	 	/**
+			Returns true if the initialization process is finished. Otherwise false.
+	 	*/
 	 	public isReady():bool { return this._ready; }
 
+	 	/**
+			Returns a hashmap (Object) of all events.
+	 	*/
 	 	public getEvents():AQEvent[] {
 	 		return this._eventController.getEvents();
 	 	}
 
+	 	/**
+			Dispatches a pre-defined event and returns a time indication of when the event will occur.
+			@param event Name of the event.
+			@param arg Optional argument. Some actions handles "developer arguments" and if the event contain one of those actions, the argument will be passed to it.
+	 	*/
 	 	public dispatchEvent(event:string, arg?:any = null):number {
 	 		return this._eventController.dispatchEvent(event, arg);
 	 	}
@@ -229,7 +271,6 @@ module AudioCue {
 	 				// we're ready to start
 					var events:AQEvent[] = this._parser.getEvents();
 					for (var i:number = 0; i<events.length; i++) {
-						//console.log(events[i].actionsAndArgs);
 						this._eventController.addEvent(events[i]);
 					}
 					this._audioLoader = new AudioLoader(this.cb_audioloader);
@@ -251,22 +292,16 @@ module AudioCue {
 	 		var progress:number = 1-(itemsLeft/totalItems);
 	 		this._audioLoaderProgress = progress*0.5;
 	 		this._callback(AudioCueEvents.PROGRESS, this._dataProgress + this._audioLoaderProgress);
-//	 		console.log("Audioloader progress: "+progress + " "+totalItems+ " "+itemsLeft);
-
 			if (itemsLeft == 0) {
-				//console.log(btbloader);
 				var allBuffers:AudioSource[] = this._audioLoader.getAudioSourcesMap();
-				//console.log(allBuffers);
-				// i sequences finns soundsVO och audiofilesVO
+
 				var sequencesVO:AudioCue.SequenceVO[] = this._parser.getSequencesVO();
 				for (var prop in sequencesVO) {
 					var sevo:AudioCue.SequenceVO = sequencesVO[prop];
-					//console.log("wtf: "+sevo);
 					sevo.audioSources = new Array();
 					for (var j:number = 0; j<sevo.soundsVO.length; j++) {
 						var sovo:SoundVO = sevo.soundsVO[j];
 						sevo.audioSources.push(allBuffers[sovo.name]);
-						//console.log("create: "+sovo.name);
 					}
 				}
 
@@ -294,12 +329,29 @@ module AudioCue {
 			}
 		}
 	}
+	/**
+		A holder of static strings which contain valid event names.
+	*/
 	export class AudioCueEvents {
+		/**
+			Will get dispatched when the initialization process is done.
+			The val parameter in AudioCueCallback type isn't important.
+		*/
 		static READY:string = "aqready";
+		/**
+			Will get dispatched continiously during initialization.
+			The val parameter in AudioCueCallback holds the current progress as a number between 0 and 1.
+		*/
 		static PROGRESS:string = "aqprogress";
 	}
-
+	/**
+		Callback specification.
+	*/
 	export interface AudioCueCallback {
+		/**
+			@param event Name of the callback event (@see AudioCueEvents)
+			@param val What this param contain depends on the event. @see AudioCueEvents for more info.
+		*/
 		(event:string, val:any):void;
 	}
 }
