@@ -1,0 +1,44 @@
+{
+  "root": {
+    "groupData": {
+      "group": {
+        "-name": "kompgroup",
+        "volume": "1",
+        "effects": {
+          "effect": {
+            "-id": "LowpassFilter",
+            "-instance": "uniktnamn",
+            "param": [
+              {
+                "-key": "freq",
+                "-value": "200"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "busData": {
+      "master": {
+        "-volume": "1",
+        "-pan": "0"
+      },
+      "bus": [
+        {
+          "-name": "main",
+          "-volume": "1.000000"
+        },
+        {
+          "-name": "music",
+          "-volume": "1.000000",
+          "-parent": "main"
+        },
+        {
+          "-name": "fx",
+          "-volume": "1.000000",
+          "-parent": "main"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+	    "folders":
+    [
+        {
+            "path": "src",
+            "name": "Source"
+        },
+        {
+            "path": "assets",
+            "name": "Assets"
+        },
+        {
+            "path": "build-debug",
+            "name": "build-debug"
+        },
+        {
+            "path": "build-release",
+            "name": "build-release"
+        }
+
+    ],
+    "build_systems":
+    [
+        {
+            "name": "Compile Audio Cue debug", 
+            "cmd": ["$project_path/scripts/build-debug.sh","$project_path/src/main.ts", "$project_path"],
+            "file_regex": "^(.+?) \\((\\d+),(\\d+)\\)(: .+)$",
+            "line_regex": "\\((\\d+),(\\d+)\\)",
+            "selector": "source.ts",
+            "osx": {
+               "path": "/usr/local/bin:/opt/local/bin"
+            }
+        },
+        {
+            "name": "Compile Audio Cue release", 
+            "cmd": ["$project_path/scripts/build-release.sh","$project_path/src/main.ts", "$project_path"],
+            "file_regex": "^(.+?) \\((\\d+),(\\d+)\\)(: .+)$",
+            "line_regex": "\\((\\d+),(\\d+)\\)",
+            "selector": "source.ts",
+            "osx": {
+               "path": "/usr/local/bin:/opt/local/bin"
+            }
+        }
+
+    ]
+}

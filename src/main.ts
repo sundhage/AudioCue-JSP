@@ -32,10 +32,10 @@ var aqcb = function(event:string, val:number) {
 }
 
 
-//AudioCue.AQController.createInstance(["btb/sounds.json", "btb/events.json", "btb/routing.json"], "btb/", ".mp3", aqcb).init();
+//AudioCue.AQController.createInstance(["assets/btb/sounds.json", "assets/btb/events.json", "assets/btb/routing.json"], "assets/btb/", ".mp3", aqcb).init();
 
 
-AudioCue.AQController.createInstance("btb.json", ["sounds.json", "events.json", "routing.json"], aqcb).init();
+AudioCue.AQController.createInstance("assets/btb.json", ["sounds.json", "events.json", "routing.json"], aqcb).init();
 
 
 

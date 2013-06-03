@@ -19,7 +19,7 @@ var aqcb = function (event, val) {
         console.log("AQ progress: " + val);
     }
 };
-AudioCue.AQController.createInstance("btb.json", [
+AudioCue.AQController.createInstance("assets/btb.json", [
     "sounds.json", 
     "events.json", 
     "routing.json"

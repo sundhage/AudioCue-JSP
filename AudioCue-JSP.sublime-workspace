@@ -1,0 +1,710 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"super",
+				"supersecret"
+			],
+			[
+				"read",
+				"readyState"
+			],
+			[
+				"_audio",
+				"_audioLoaderProgress"
+			],
+			[
+				"_sound",
+				"_soundsCount"
+			],
+			[
+				"get",
+				"getSoundsVO"
+			],
+			[
+				"AudioC",
+				"AudioCueEvents"
+			],
+			[
+				"firs",
+				"firstBusy"
+			],
+			[
+				"bu",
+				"busyObjects"
+			],
+			[
+				"Pool",
+				"PoolController"
+			],
+			[
+				"first",
+				"firstFree"
+			],
+			[
+				"pool",
+				"pools"
+			],
+			[
+				"fir",
+				"firstBusy"
+			],
+			[
+				"obj",
+				"object"
+			],
+			[
+				"ne",
+				"next"
+			],
+			[
+				"poo",
+				"pools"
+			],
+			[
+				"json",
+				"jsonstring"
+			],
+			[
+				"_base",
+				"_base64FileUrl"
+			],
+			[
+				"_bas",
+				"_base64FileUrl"
+			],
+			[
+				"_in",
+				"_instance"
+			],
+			[
+				"AudioCu",
+				"AudioCueCallback"
+			],
+			[
+				"web",
+				"webkitAudioContext"
+			],
+			[
+				"Pla",
+				"PlayArrAction"
+			],
+			[
+				"act",
+				"actionsAndArgs"
+			],
+			[
+				"ret",
+				"retCueStart"
+			],
+			[
+				"event",
+				"EventController"
+			],
+			[
+				"cre",
+				"createInstance"
+			],
+			[
+				"Eve",
+				"EventController"
+			],
+			[
+				"ac",
+				"actionsAndArgs"
+			],
+			[
+				"pl",
+				"playArrangement"
+			],
+			[
+				"cue",
+				"cuedArrangement"
+			],
+			[
+				"Arra",
+				"Arrangement"
+			],
+			[
+				"create",
+				"createButton"
+			],
+			[
+				"soundObj",
+				"soundObjects"
+			],
+			[
+				"Arrange",
+				"ArrangementVO"
+			],
+			[
+				"Arran",
+				"Arrangement"
+			],
+			[
+				"sou",
+				"soundsVO"
+			],
+			[
+				"seq",
+				"sequencesVO"
+			],
+			[
+				"seque",
+				"sequencesVO"
+			],
+			[
+				"_load",
+				"_loadedDataMap"
+			],
+			[
+				"base",
+				"basePath"
+			],
+			[
+				"Arr",
+				"ArrangementVO"
+			],
+			[
+				"Seq",
+				"SequenceVO"
+			],
+			[
+				"Sound",
+				"SoundVO"
+			],
+			[
+				"sequ",
+				"sequences"
+			],
+			[
+				"ex",
+				"extension"
+			],
+			[
+				"Par",
+				"ParserCallback"
+			],
+			[
+				"pla",
+				"playArrangement"
+			],
+			[
+				"arr",
+				"arrangements"
+			],
+			[
+				"cu",
+				"cuedArrangement"
+			],
+			[
+				"_se",
+				"_sequences"
+			],
+			[
+				"_seq",
+				"_sequences"
+			],
+			[
+				"Sequ",
+				"Sequence"
+			],
+			[
+				"Sequence",
+				"SequenceVO"
+			],
+			[
+				"Seque",
+				"SequenceCallback"
+			],
+			[
+				"_curre",
+				"_currentPlayingSound"
+			],
+			[
+				"_so",
+				"_playingSounds"
+			],
+			[
+				"_pla",
+				"_playingSounds"
+			],
+			[
+				"Audio",
+				"AudioCue"
+			],
+			[
+				"_",
+				"_currentIndex"
+			],
+			[
+				"start",
+				"startIsDispatched"
+			],
+			[
+				"SOUND",
+				"SOUND_START"
+			],
+			[
+				"musical",
+				"musicalEndIsDispatched"
+			],
+			[
+				"playin",
+				"playingSound"
+			],
+			[
+				"Pl",
+				"PlayingSound"
+			],
+			[
+				"Play",
+				"PlayingSoundHolder"
+			],
+			[
+				"_pl",
+				"_playingSounds"
+			],
+			[
+				"Au",
+				"AudioCue"
+			],
+			[
+				"con",
+				"contexts"
+			],
+			[
+				"_lo",
+				"_loadCue"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"isV",
+				"isValid"
+			],
+			[
+				"_loa",
+				"_loadedData"
+			],
+			[
+				"load",
+				"loadCue"
+			],
+			[
+				"add",
+				"addslashes"
+			],
+			[
+				"pic",
+				"picname"
+			],
+			[
+				"mysql_fe",
+				"mysql_fetch_object"
+			],
+			[
+				"thu",
+				"thumbFilename"
+			],
+			[
+				"have",
+				"haveProperPostData"
+			],
+			[
+				"lo",
+				"console.log();"
+			],
+			[
+				"thro",
+				"throttledStream  (variable)"
+			],
+			[
+				"readF",
+				"fs.readFileSync(path, encoding);"
+			],
+			[
+				"createSer",
+				"http.createServer(requestListener);"
+			],
+			[
+				"req",
+				"require"
+			],
+			[
+				"v",
+				"val"
+			],
+			[
+				"in",
+				"Int	class"
+			],
+			[
+				"Li",
+				"Lib	js"
+			],
+			[
+				"trac",
+				"Trace	flash.trace"
+			],
+			[
+				"getS",
+				"getSequenceFramesToNext	aq_getSequenceFramesToNext"
+			],
+			[
+				"play",
+				"playArrangementWithCue	aq_playArrangementWithCue"
+			],
+			[
+				"set",
+				"setEffectParam	aq_setEffectParam"
+			],
+			[
+				"se",
+				"setBusGain	aq_setBusGain"
+			],
+			[
+				"ehco",
+				"enchant_dict_add_to_session"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"de",
+				"def	#ifndef … #define … #endif"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.ts",
+			"settings":
+			{
+				"buffer_size": 1087,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/typescript.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 602.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/sundhage/Library/Application Support/Sublime Text 2/Packages/User/typescript.sublime-build",
+		"/Users/sundhage/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/README.md",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/ArrangementController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/BasicActions.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/EventController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/Group.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/Parser.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/PoolController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/AQInterfaces.d.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/AQController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/AQObject.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/Silence.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/Sound.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/AudioLoader.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/AQStructs.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/SoundController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/Arrangement.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/Sequence.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/AQ/SoundObject.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AudioCue-jsp/AudioCue-JSP/www/main.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/AQController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/main.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/typings/waa-nightly.d.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/Group.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/Parser.ts",
+		"/Users/sundhage/.ssh/id_dsa.pub",
+		"/Users/sundhage/.ssh/id_rsa",
+		"/Users/sundhage/.ssh/id_rsa.pub",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/file.src",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/btb.src",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/btb_fix.src",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/39cf3114-e378-40d4-b69e-5c5e01077025/public_html/temp/aqweb/main.js",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/39cf3114-e378-40d4-b69e-5c5e01077025/public_html/temp/aqweb/aq_min.js",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/aq_min.js",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/helpers/JSMin-master/jsmin.c",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/index.html",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/bin/deploy.sh",
+		"/Users/sundhage/Documents/01 DEV_XCODE/AudioEngine/JSAE/Effects/JSAEEffect.h",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/index2.html",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/aq.js",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/PoolController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/AQStructs.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/AQObject.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/SoundController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/Silence.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/Sound.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/SoundObject.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/PoolObject.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/AQInterfaces.d.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/Sequence.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/EventController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/BasicActions.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/AudioLoader.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/ArrangementController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/AQ/Arrangement.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/www/waa-nightly.d.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/index.html",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/waa-nightly.d.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/AQInterfaces.d.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/Arrangement.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/AQStructs.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/AudioLoader.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/main.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/Sound.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/SoundController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/SoundObject.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/Sequence.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/SoundObject.js",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/Parser.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/AQController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/btb.json",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/assets/test.json",
+		"/Users/sundhage/Documents/03 PROJECTS/AQWeb/AQ/Parser.js",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/sounds.json",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/Parser.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/AudioLoader.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/SoundController.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/Sound.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/Arrangement.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/Sequence.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/AQObject.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/waa-nightly.d.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/Sound",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/joistest.ts",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/index.html",
+		"/Users/sundhage/Documents/03 PROJECTS/TypeScript/joistest.tsc",
+		"/Users/sundhage/Downloads/Cocos2d-html5-v2.1.1.zip Folder/Demo/NativeClientDemo/NaclModule/helper_functions.cc",
+		"/Users/sundhage/Downloads/Cocos2d-html5-v2.1.1.zip Folder/Demo/NativeClientDemo/NaclModule/cocos2dnacl.cc",
+		"/Users/sundhage/Downloads/kiss_fft130/test/doit.c",
+		"/Users/sundhage/Documents/01 DEV_XCODE/JSAE_WAVETABLESYNTH/JSAE_WAVETABLESYNTH/PADsynth_implementation/fftwrapper/FFTwrapper.h",
+		"/Users/sundhage/Documents/01 DEV_XCODE/JSAE_WAVETABLESYNTH/JSAE_WAVETABLESYNTH/PADsynth_implementation/c_basic/padsynth1.c",
+		"/Users/sundhage/Documents/01 DEV_XCODE/JSAE_WAVETABLESYNTH/JSAE_WAVETABLESYNTH/PADsynth_implementation/PADsynth_CPP/PADsynth.h",
+		"/Users/sundhage/Downloads/PADsynth_implementation/c_basic/padsynth1.c",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/39cf3114-e378-40d4-b69e-5c5e01077025/public_html/retroracer/settings.php",
+		"/Users/sundhage/Documents/03 PROJECTS/KYRKAN/SERVERFLYTT_2013_05/KyrkanSUAdmin.html",
+		"/Users/sundhage/Documents/03 PROJECTS/KYRKAN/SERVERFLYTT_2013_05/KyrkanPAdmin.html",
+		"/Users/sundhage/Documents/Flex Builder 3/KyrkanPAdmin/bin-debug/KyrkanPAdmin.html",
+		"/Users/sundhage/Documents/Flex Builder 3/KyrkanSUAdmin/bin-debug/KyrkanSUAdmin.html",
+		"/Users/sundhage/Documents/03 PROJECTS/CityBloxx/Building.as",
+		"/Users/sundhage/Documents/03 PROJECTS/KYRKAN/SEO/seo.php",
+		"/Volumes/Globen/www/kyrkan/php/settings.php",
+		"/Users/sundhage/Documents/03 PROJECTS/Kista_miriam/backend/backup_2013_04_17/backend/settings.php",
+		"/Users/sundhage/Documents/03 PROJECTS/Kista_miriam/backend/backup_2013_04_17/backend/api.php",
+		"/Users/sundhage/Documents/03 PROJECTS/Kista_miriam/backend/backup_2013_04_17/backend/gateway_ios.php",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/9dde3955-dcab-4989-ba06-d1bf4448ab1d/maryam/backend/visuals/mcomments.php",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists_alla.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists2010.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists2000.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists1990.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists1980.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists1970.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists1960.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists1950.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists1940.xml",
+		"/Volumes/SMHOF 1/SMHOF/bio/artists1930.xml",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/9dde3955-dcab-4989-ba06-d1bf4448ab1d/maryam/backend/visuals/mhookup.php",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/9dde3955-dcab-4989-ba06-d1bf4448ab1d/maryam/backend/visuals/connectMDB.php",
+		"/Volumes/SMHOF 1/SMHOF/bio/content1930.xml",
+		"/Users/sundhage/Documents/03 PROJECTS/Hello Monday/audioengine/lib/src/com/klevgrand/air/extensions/audioengine/AudioEngine.as",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/48d10fa6-273f-4482-bf55-bcc7252454af/var/www/smhof/backend.php",
+		"/private/var/folders/rv/18vh89w53ys6qv9t6cx066840000gp/T/48d10fa6-273f-4482-bf55-bcc7252454af/var/www/smhof/index.php",
+		"/Users/sundhage/Documents/03 PROJECTS/Hello Monday/audioengine/Phase 1 Delivery/readme.txt",
+		"/Users/sundhage/Documents/03 PROJECTS/Hello Monday/audioengine/cs6_ios/file.txt",
+		"/Users/sundhage/Documents/03 PROJECTS/Hello Monday/audioengine/lib/build/extension.xml",
+		"/Users/sundhage/Downloads/iBattery-master/flash/lib/build/extension.xml",
+		"/Users/sundhage/Downloads/iBattery-master/flash/lib/build2/extension.xml",
+		"/Applications/Adobe Flash Builder 4/sdks/AdobeAIRSDK/include/FlashRuntimeExtensions.h"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"cp",
+			"_callback",
+			"AudioSou",
+			"SEQUENCE_START",
+			"_baseP",
+			"_ex",
+			"_callback",
+			"console.lo",
+			".onpro",
+			"audioparam",
+			"AudioParam",
+			"AQStructs",
+			"id",
+			"any",
+			"btb",
+			"assetExtension",
+			"_loadedData",
+			"self",
+			"owner",
+			"_removeSound",
+			"AudioBuffer",
+			"javascriptnode",
+			"Agnes",
+			"Anges",
+			"anges",
+			"canvas"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.ts",
+					"settings":
+					{
+						"buffer_size": 1087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/User/typescript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/sundhage/Documents/03 PROJECTS/TypeScript/AQ/SoundController.ts"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

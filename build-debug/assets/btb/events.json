@@ -1,0 +1,224 @@
+{
+  "eventData": {
+    "action": [
+      {
+        "event": "Pause",
+        "targets": {
+          "target": {
+            "-id": "PauseDomainAction",
+            "arg": [
+              {
+                "-key": "name",
+                "-value": "Mx"
+              },
+              {
+                "-key": "doPause",
+                "-value": "1"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "event": "Resume",
+        "targets": {
+          "target": {
+            "-id": "PauseDomainAction",
+            "arg": [
+              {
+                "-key": "name",
+                "-value": "Mx"
+              },
+              {
+                "-key": "doPause",
+                "-value": "0"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "event": "Menu",
+        "targets": {
+          "target": {
+            "-id": "PlayArrAction",
+            "arg": {
+              "-key": "name",
+              "-value": "menu_ARR"
+            }
+          }
+        }
+      },
+      {
+        "event": "GameStart",
+        "targets": {
+          "target": {
+            "-id": "PlayArrAction",
+            "arg": {
+              "-key": "name",
+              "-value": "ingame_ARR"
+            }
+          }
+        }
+      },
+      {
+        "event": "GameStress",
+        "targets": {
+          "target": {
+            "-id": "PlayArrAction",
+            "arg": [
+              {
+                "-key": "name",
+                "-value": "trans1_ARR"
+              },
+              {
+                "-key": "cue",
+                "-value": "stress_ARR"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "event": "GameOver",
+        "targets": {
+          "target": {
+            "-id": "PlayArrAction",
+            "arg": [
+              {
+                "-key": "name",
+                "-value": "trans2_ARR"
+              },
+              {
+                "-key": "cue",
+                "-value": "menu_ARR"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "event": "StopMusic",
+        "targets": {
+          "target": {
+            "-id": "StopDomainAction",
+            "arg": [
+              {
+                "-key": "name",
+                "-value": "Mx"
+              },
+              {
+                "-key": "hard",
+                "-value": "1"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "event": "EffectTest1",
+        "targets": {
+          "target": [
+            {
+              "-id": "EffectParamAction",
+              "arg": [
+                {
+                  "-key": "name",
+                  "-value": "uniktnamn"
+                },
+                {
+                  "-key": "param",
+                  "-value": "freq"
+                },
+                {
+                  "-key": "value",
+                  "-value": "5000"
+                },
+                {
+                  "-key": "time",
+                  "-value": "2.2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "event": "EffectTest2",
+        "targets": {
+          "target": [
+            {
+              "-id": "EffectParamAction",
+              "arg": [
+                {
+                  "-key": "name",
+                  "-value": "uniktnamn"
+                },
+                {
+                  "-key": "param",
+                  "-value": "freq"
+                },
+                {
+                  "-key": "value",
+                  "-value": "100"
+                },
+                {
+                  "-key": "time",
+                  "-value": "2.2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "event": "Hit",
+        "targets": {
+          "target": {
+            "-id": "StartSOAction",
+            "arg": {
+              "-key": "name",
+              "-value": "hit_SO"
+            }
+          }
+        }
+      },
+      {
+        "event": "StopHit",
+        "targets": {
+          "target": {
+            "-id": "StopSOAction",
+            "arg": {
+              "-key": "name",
+              "-value": "hit_SO"
+            }
+          }
+        }
+      },
+      {
+        "event": "Dead",
+        "targets": {
+          "target": {
+            "-id": "StartSOAction",
+            "arg": {
+              "-key": "name",
+              "-value": "dead_SO"
+            }
+          }
+        }
+      },
+      {
+        "event": "Heart",
+        "targets": {
+          "target": {
+            "-id": "StartSOAction",
+            "arg": {
+              "-key": "name",
+              "-value": "heart_SO"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
