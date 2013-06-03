@@ -1,0 +1,164 @@
+
+Compiling
+---------
+
+Right now AudioCue is a Sublime Text 2 project and depends on a few unix shell scripts to compile properly.
+
+There are two build systems in the project settings: release and debug.
+
+Building for debug cleans/creates the build-debug directory, copies the assets folder, src/wwwentry/index-debug.html and the resulting .js files to it. To run the build, just point a www-server to the build-debug directory and open http://localhost in a browser that supports the Web Audio API spec.
+
+Building for release does the same as building for debug, but concatinates and minifies the AudioCue sources (resulting file: aq_min.js) and copies index-release.html to the build-release directory.
+
+
+
+Setup
+-----
+
+There are two ways of starting up the AudioCue engine. The easy was is using the AQController class and provide it the proper paths to settings files and wait for a callback when it is finished loading and preparing audio and events.
+
+The AQController singleton class currently supports two ways of loading content into Audio Cue.
+
+1.
+
+Each asset / .json are separated into files. This is the most comfortable workflow during the development process since it is possible to quick-edit .json files and swap audio files and test the result just by refreshing the browser.
+
+Example:
+--
+function callback(event:string, progress:number) {
+ if (event == AudioCue.AudioCueEvents.READY) {
+  // AudioCue is ready.
+ } else if (event == AudioCue.AudioCueEvents.PROGRESS) {
+  // AudioCue is loading.
+ }
+}
+
+var jsonPaths:string[] = ["assets/btb/sounds.json", "assets/btb/events.json", "assets/btb/routing.json"];
+
+AudioCue.AQController.createInstance(jsonPaths, "assets/btb/", ".mp3", callback).init();
+--
+The first parameter lists the settings files.
+The second parameter sets the base path of audio content.
+The third parameter sets the file format of audio content.
+The last parameter is a reference to the callback function.
+
+2.
+
+All sound assets and .json files are bundled into one large .json-file containing an object of Base64 encoded strings. This makes the loading process faster (since we only have to create one request to load all content data).
+
+Example:
+--
+function callback(event:string, progress:number) {
+ if (event == AudioCue.AudioCueEvents.READY) {
+  // AudioCue is ready.
+ } else if (event == AudioCue.AudioCueEvents.PROGRESS) {
+  // AudioCue is loading.
+ }
+}
+
+var settingsFiles:string[] = ["sounds.json", "events.json", "routing.json"];
+AudioCue.AQController.createInstance("assets/btb.json", settingsFiles, callback).init();
+--
+The first parameter is a path to the json bundle.
+The second parameter is a list of settings file names included in the json bundle.
+The third parameter is a reference to the callback function.
+
+
+
+The other way of setting up AudioCue is much more complicated (and requires some in-depth knowledge of the API structure and how all the objects interact with each other) but offers more flexibility.
+
+Very simple example loading a sound and playing it through AudioCue:
+
+--
+var playingSound:PlayingSound;
+
+function cb_sound(event:string, ps:PlayingSound, value:number) {
+ // event can be SoundEvents.SOUND_END, SoundEvents.SOUND_MUSICAL_END, SoundEvents.SOUND_START
+ // we will check for musical end and replay the same sound again to create a sound loop
+ if (event == SoundEvents.SOUND_MUSICAL_END) {
+  // parent is the sound we created in cb_audioLoader
+  // the value parameter is a small timing difference of exactly how long time it is to the musical end.
+  playingSound = ps.parent.play(SoundController.getInstance().getMasterContext().currentTime+value);
+ }
+ 
+}
+
+// audio loader callback
+// as is the loaded audio
+// itemsLeft is how many items left there are to load. if 0, all sounds are loaded
+function cb_audioLoader(as:AudioSource, itemsLeft:number) {
+ if (itemsLeft == 0) {
+  s = new Sound(as, SoundController.getInstance().getMasterContext(), cb_sound);
+  playingSound = s.play(SoundController.getInstance().getMasterContext().currentTime);
+ }
+}
+
+// Starts the sound engine that handles sound timing
+SoundController.createInstance(null).start();
+
+// creates an object pool for PlayingSound class
+PoolController.createPool(PlayingSound, null, 64);
+
+var loader:AudioLoader = new AudioLoader(cb_audioLoader);
+var soundVO:SoundVO = new SoundVO;
+soundVO.name = "mysound";
+soundVO.path = "mysound.mp3";
+soundVO.type = SoundVO.SOUND_TYPE_AUDIOFILE;
+soundVO.musicalLength = 2;
+loader.addFile(soundVO);
+loader.preloadAll();
+
+
+--
+
+
+The sound hiearchy
+------------------
+
+The smallest piece of audio content is a object the conforms to the ISound class (the example above is an example of that). When starting an ISound instance it will return a PlayingSound instance. This PlayingSound instance must be used to stop a running sound. Note! Since there are a lot of PlayingSounds created and removed over time there lifetime is controller by PoolController. SoundController takes care of this. The maximum number of simultaniously played sounds are 64 (set in AQController constructor).
+
+On top of ISound objects there are Sequences and SoundObject. A sequence is a list of ISound instances that will play sequentially. When a ISound reaches a musical end, the next ISound in list will start playing while the first one continue playing until its actual end.
+
+A sequence can be played, stopped and tell how long time there is to the next musical end.
+To create a sequence one must provide an indexed array of SequenceVO instances and a callback function (se code documentation). Sequences also optionally belongs to a Group. A Group has a gain and (optionally) a list of insert DSP effects.
+
+
+An Arrangement is a set of Sequence instances that will play in parallel. Just like a Sequence instance, an arrangement can be played, stopped and return time to the next musical end (based on the sequences). In addition to sequence, an arrangement also belongs to a domain. This is just a way to structure a Audio Cue project with a lot of arrangements. The idea is to never play two arrangements at the same time if they belong to the same domain. This rule applies on all actions provided. Arrangements should be created via the ArrangementController class.
+
+
+A SoundObject holds just like a Sequence a set of Sound instances. Instead of playing the sounds sequentially a SoundObject plays one of the on each call to .play(). What sound should be played depends on the SoundObject's type (see code documentation).
+
+
+Groups and Effects
+------------------
+
+Sequences and SoundObjects (and Sounds) can belong to a Group. Groups are like a mixer bus where it's possible to control all the belonging objects gain level. It is also possible to add different DSP effects to a group. These effects' parameters can be altered/tweened in real-time. See code documentation for more info.
+
+
+
+Events and Actions
+------------------
+
+Events should normally be created by the composer / audio engineer. These events are stuff that will happen in the application (like "game start", "low life", "game over" etc). Each event contain one or more Action instances. An action is a pre-defined function that takes a number of arguments. The available Actions are defined in AQ/BasicActions.ts.
+
+To create an event use the AQEvent:
+var e:AQEvent = new AQEvent();
+e.name = "game_start";
+var actionAndArgs:ActionAndArg = new ActionAndArg;
+actionAndArgs.actionName = "PlayArrAction";		// defined in BasicActions.ts
+actionAndArgs.args = {name:"startmusic_ARR"};
+e.actionAndArgs = [actionAndArgs];
+
+
+To add an event (if setting up AudioCue manually) make sure EventController.createInstance() has been called and use
+
+EventController.getInstance().addEvent(e);
+
+When the above is done you can run dispatchEvent to start the "startmusic_ARR" like this:
+
+EventController.getInstance().dispatchEvent("game_start");
+
+Or when done manually, you could also skip everything above and just do it like this:
+ArrangementController.getInstance().playArrangement("startmusic_ARR");
+
+
