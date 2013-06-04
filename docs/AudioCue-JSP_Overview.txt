@@ -1,3 +1,4 @@
+(this is a quickly-made draft)
 
 Compiling
 ---------
@@ -6,7 +7,7 @@ Right now AudioCue is a Sublime Text 2 project and depends on a few unix shell s
 
 There are two build systems in the project settings: release and debug.
 
-Building for debug cleans/creates the build-debug directory, copies the assets folder, src/wwwentry/index-debug.html and the resulting .js files to it. To run the build, just point a www-server to the build-debug directory and open http://localhost in a browser that supports the Web Audio API spec.
+Building for debug cleans/creates the build-debug directory, copies the assets folder, src/wwwentry/index-debug.html and the resulting .js files to it. To run the build, just point a webserver to the build-debug directory and open http://localhost in a browser that supports the Web Audio API spec.
 
 Building for release does the same as building for debug, but concatinates and minifies the AudioCue sources (resulting file: aq_min.js) and copies index-release.html to the build-release directory.
 
@@ -15,7 +16,7 @@ Building for release does the same as building for debug, but concatinates and m
 Setup
 -----
 
-There are two ways of starting up the AudioCue engine. The easy was is using the AQController class and provide it the proper paths to settings files and wait for a callback when it is finished loading and preparing audio and events.
+There are two ways of starting up the AudioCue engine. The easy way is using the AQController class and provide it the proper paths to settings files and wait for a callback when it is finished loading and preparing/creating audio, sound objects and events.
 
 The AQController singleton class currently supports two ways of loading content into Audio Cue.
 
@@ -45,6 +46,8 @@ The last parameter is a reference to the callback function.
 2.
 
 All sound assets and .json files are bundled into one large .json-file containing an object of Base64 encoded strings. This makes the loading process faster (since we only have to create one request to load all content data).
+
+To create a json bundle use the folder2json command included in this repo (binary compiled for Mac OSX in bin folder, source code in helpers/xcode-folder2json).
 
 Example:
 --
@@ -112,38 +115,39 @@ loader.preloadAll();
 --
 
 
-The sound hiearchy
+The sound hierarchy
 ------------------
 
-The smallest piece of audio content is a object the conforms to the ISound class (the example above is an example of that). When starting an ISound instance it will return a PlayingSound instance. This PlayingSound instance must be used to stop a running sound. Note! Since there are a lot of PlayingSounds created and removed over time there lifetime is controller by PoolController. SoundController takes care of this. The maximum number of simultaniously played sounds are 64 (set in AQController constructor).
+The smallest piece of audio content is a object the conforms to the ISound interface (the example above is an example of that). When starting an ISound instance it will return a PlayingSound instance. This PlayingSound instance must be used to stop a running sound. Note! Since there are a lot of PlayingSounds created and removed over time there lifetime is controller by PoolController. This is all handled in the SoundController class. The maximum number of simultaneously played sounds are 64 (set in AQController constructor).
 
-On top of ISound objects there are Sequences and SoundObject. A sequence is a list of ISound instances that will play sequentially. When a ISound reaches a musical end, the next ISound in list will start playing while the first one continue playing until its actual end.
+On top of ISound objects there are Sequences and SoundObject. A sequence is a list of ISound instances that will play sequentially. When an ISound reaches a musical end, the next ISound in list will start playing while the first one continue playing until its actual end.
 
-A sequence can be played, stopped and tell how long time there is to the next musical end.
-To create a sequence one must provide an indexed array of SequenceVO instances and a callback function (se code documentation). Sequences also optionally belongs to a Group. A Group has a gain and (optionally) a list of insert DSP effects.
-
-
-An Arrangement is a set of Sequence instances that will play in parallel. Just like a Sequence instance, an arrangement can be played, stopped and return time to the next musical end (based on the sequences). In addition to sequence, an arrangement also belongs to a domain. This is just a way to structure a Audio Cue project with a lot of arrangements. The idea is to never play two arrangements at the same time if they belong to the same domain. This rule applies on all actions provided. Arrangements should be created via the ArrangementController class.
+A sequence can be played, stopped and return how long time there is to the next musical end.
+To create a sequence one must provide an indexed array of SequenceVO instances and a callback function (se code documentation). Sequences will create their own ISound instances internally. Sequences also optionally belongs to a Group. A Group has a gain and (optionally) a list of insert DSP effects.
 
 
-A SoundObject holds just like a Sequence a set of Sound instances. Instead of playing the sounds sequentially a SoundObject plays one of the on each call to .play(). What sound should be played depends on the SoundObject's type (see code documentation).
+An Arrangement is a set of Sequence instances that will play in parallel. Just like a Sequence instance, an arrangement can be played, stopped and return time to the next musical end (based on the sequences). In addition to sequence, an arrangement also belongs to a domain. This is just a way to structure a Audio Cue project with a lot of arrangements. The basic idea is to never play two arrangements at the same time if they belong to the same domain. This rule applies on all actions provided. Arrangements should be created via the ArrangementController class and the Arrangement class creates its own Sequence objects internally.
+
+
+A SoundObject holds (just like a Sequence) a set of Sound instances. Instead of playing the sounds sequentially a SoundObject plays one of the on each call to .play(). What sound should be played depends on the SoundObject's type (see code documentation).
 
 
 Groups and Effects
 ------------------
 
-Sequences and SoundObjects (and Sounds) can belong to a Group. Groups are like a mixer bus where it's possible to control all the belonging objects gain level. It is also possible to add different DSP effects to a group. These effects' parameters can be altered/tweened in real-time. See code documentation for more info.
+Sequences and SoundObjects (and Sounds) can belong to a Group. Groups are like a mixer bus where it's possible to control all the belonging objects gain level. It is also possible to add different DSP effects to a group. These effect parameters can be altered/tweened in real-time. See code documentation for more info.
 
 
 
 Events and Actions
 ------------------
 
-Events should normally be created by the composer / audio engineer. These events are stuff that will happen in the application (like "game start", "low life", "game over" etc). Each event contain one or more Action instances. An action is a pre-defined function that takes a number of arguments. The available Actions are defined in AQ/BasicActions.ts.
+The intention is that events should be created by the composer / audio engineer. These events describes will happen in the application (like "game start", "low life", "game over" etc). Each event contain a set of Action instances. An action is a pre-defined function that takes a number of arguments. The available Actions are defined in AQ/BasicActions.ts.
 
-To create an event use the AQEvent:
+To create an event use the AQEvent object:
+
 var e:AQEvent = new AQEvent();
-e.name = "game_start";
+e.name = "game start";
 var actionAndArgs:ActionAndArg = new ActionAndArg;
 actionAndArgs.actionName = "PlayArrAction";		// defined in BasicActions.ts
 actionAndArgs.args = {name:"startmusic_ARR"};
@@ -156,9 +160,7 @@ EventController.getInstance().addEvent(e);
 
 When the above is done you can run dispatchEvent to start the "startmusic_ARR" like this:
 
-EventController.getInstance().dispatchEvent("game_start");
+EventController.getInstance().dispatchEvent("game start");
 
-Or when done manually, you could also skip everything above and just do it like this:
-ArrangementController.getInstance().playArrangement("startmusic_ARR");
-
+If there is another arrangement playing while the "game start" event is dispatched, the startmusic_ARR will start at the current arrangements next musical end.
 

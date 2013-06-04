@@ -1,0 +1,52 @@
+(this is a quickly-made draft)
+
+The original AudioCue engine has a big set of native actions, and is also extendable using LUA scripting. Since this version of AudioCue is easier to extend (and supporting LUA would be a really dumb thing to do) one could easily create new actions by injecting .js files in the html. Look into BasicActions.js (or .ts) for more info on how to do that.
+
+This is the current actions, what parameters they accept and how they behave:
+
+--PlayArrAction
+Starts an arrangement (and optionally puts another arrangement on queue). If some other arrangement in the domain is playing that one will stop and the current will play when the other is reaching its next musical end.
+
+arguments
+name		Name of the arrangement to start
+
+cue		(optional) Name of the queued arrangement
+
+retCueStart	(optional) Flag ("0" or "1") that affects return value.
+
+returns
+Time to when the arrangement will start, or if retCueStart is set to 1 when queued arrangement will start.
+
+--StopDomainAction
+Stops any playing arrangement in a specific domain.
+
+arguments
+name		Name of the domain
+hard		Flag, (optional, defaults to "0"). If set to "1", the arrangement will stop immediately. If set to "0" the arrangement will continue playing until it reached next musical end.
+
+returns
+Time to when the arrangement will stop.
+
+--StartSOAction
+Starts/plays a SoundObject
+
+arguments
+name		Name of the SoundObject	
+
+returns 0
+
+--StopSOAction
+Stops all playing instances of a SoundObject
+
+arguments
+name		Name of the SoundObject
+
+--EffectParamAction
+Sets or tweens an effect parameter
+
+arguments
+name		Effect instance name
+param		Effect param name (see Groups.js for available params on each effect)
+value		Effect param value to be set.
+time		Tween time (if 0, it will be set direct)
+

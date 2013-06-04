@@ -1,0 +1,132 @@
+
+(this is a quickly-made draft)
+
+The json settings files
+-----------------------
+
+The original Audio Cue format is XML which makes the json format a bit quirky in some ways. A converter from XML to json is planned, but for now it works fine using the online tool at http://www.utilities-online.info/xmltojson/
+
+The settings can be divided into 4 different files (or concatinated into 1) and is based on 4 objects: soundData, eventData, groupData and busData (busData is not currently implemented and won't get parsed).
+
+-- The soundData object
+
+This part describes all the ISound instances, Sequence instances, Arrangangement instances and SoundObject instances.
+
+
+Sounds (soundData.sound)
+
+Inside the soundData objects there is an array called sound. Each sound has three parameters.
+
+name
+The name of the sound (if the sound is an audiofile it must have the same name as the audiofile but without the file postfix)
+
+length
+The musical length of the sound. This could be described in seconds or beats-and-bpm. If the length value is set to "120,4" the musical length will be four beats at 120 bpm (will be 2 seconds). If the length value is set to "1.23" the musical length will simply be 1.23 seconds.
+
+type
+Currently two types of sounds are supported. If type is set to "0" Audio Cue will create a Sound instance, if type is set to "1" Audio Cue till create a Silence instance.
+
+--
+
+SoundObjects (soundData.soundObject)
+
+These objects has quite a lot of parameters and describes both Sequences and SoundObjects depending on their mode parameter.
+
+mode
+If set to "pattern", a Sequence will get created.
+If set to "steptrig", a SoundObject with step trig type will get created.
+If set to "randomtrig", a SoundObject with random trig type will get created.
+
+name
+The unique name.
+
+loop (only applies when mode is set to "pattern")
+If set to "1" the Sequence will loop. If set to "0" it wont.
+
+pan
+Not implemented
+
+volume
+Not implemented
+
+group
+Parent group name. Omit this parameter if the pattern should not belong to any group.
+
+parentBus
+Not implemented
+
+sound
+An array of the sounds belonging to the SoundObject or Sequence. The "-offset" parameter is not used, and the "#text" parameter refers to the sound name declared in the top level sound array.
+
+--
+
+Arrangements (soundData.arrangement)
+
+The arrangements describes the Arrangement settings.
+
+name
+The unique name of the arrangement
+
+domain
+Name of the domain where the arrangement should belong
+
+tempo
+Not used.
+
+retrigg
+Not implemented
+
+soundObject
+A list of the Sequences that the arrangement should contain. Some instances can be objects with the "-upbeat" parameter. These are not supported by AudioCue JSP at the moment and will be skipped.
+
+-- The groupData object
+
+This objects contain an array of data describing each group. A group has an unique name/identifier, a volume parameter and a set of insert effects. Each insert effect has an unique name, a reference to what type of effect it is and (optionally) the effects parameter settings.
+
+Group (groupData.group)
+
+-name
+the unique identifier of the group.
+
+volume 
+starting volume level (a value between 0 and 1)
+
+effects.effect
+an array of insert effects belonging to the group.
+
+effects.effect[].-id
+The effect name to create (not a unique identifier)
+
+effects.effect[].-identifier
+The unique instance name
+
+effects.effect[].param
+This is an array of key-value paired objects and the available keys and values depends on what kind of effect is created.
+
+
+-- The busData object
+
+Not currently implemented.
+
+
+-- The eventData object
+
+This part describes all the events and what actions that should be performed when triggering an event. To get more info about the actions and their parameters, look into AudioCue-JSP_Actions.txt and BasicActions.js
+
+
+action (eventData.action)
+This is an array of all the events (OBS! This naming of this array should be changed to event, it's an old design flaw that hasn't been fixed)
+
+action.event
+The name of the event (for example "game start")
+
+action.target
+An array of what actions shuld be run when the event is triggered.
+
+action.target[].-id
+The name of the action function declared in BasicActions.jsp
+
+action.target[].args
+An array of key/value paired objects of arguments that will get passed to the action.
+
+
