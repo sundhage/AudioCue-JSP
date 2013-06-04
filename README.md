@@ -8,11 +8,10 @@ Audio Cue is a sound and music engine with focus on adaptive and interactive mus
 Current todo list:
 
 	Test cases and demos
-	In-depth explanation/documentation of the settings files (.json)
-	In-depth actions documentation
-	Work flow guidelines
 	Partial loading of assets
 	Bus system
+	A proper overview and documentation.
+	Work flow guidelines for music producers
 	Converter between the native AudioCue file format (.aq) and the current json containing Base64 encoded assets and settings.
 
 
